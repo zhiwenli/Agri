@@ -1,0 +1,40 @@
+.webwidget_vertical_menu{ 
+                         z-index:99;
+                         }
+
+.webwidget_vertical_menu ul{
+    padding: 0px;
+    margin: 0px;
+    font-family: Arial;
+}
+.webwidget_vertical_menu li{
+    
+}
+.webwidget_vertical_menu ul li{
+    list-style: none;
+    position: relative;
+}
+.webwidget_vertical_menu ul li a{
+    padding-left: 15px;
+    text-decoration: none;
+}
+.webwidget_vertical_menu ul li ul{
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    z-index: 999999;
+}
+.webwidget_vertical_menu ul li ul li{
+    margin: 0px;
+    border:none;
+}
+.webwidget_vertical_menu ul li ul li ul{
+
+}
+.webwidget_vertical_menu_down_drop{
+	background-position: right center;
+	background-repeat:no-repeat !important;
+}
+.webwidget_vertical_menu ul li li{
+    font-weight: normal;
+}

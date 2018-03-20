@@ -1,0 +1,76 @@
+<?php 
+  $activeBar_;
+  if(isset($activeBar)){
+    $activeBar_ = $activeBar;
+  }else{
+    $activeBar_ = array(0, 0);
+  }
+?>
+<!-- **********************************************************************************************************************************************************
+MAIN SIDEBAR MENU
+*********************************************************************************************************************************************************** -->
+<!--sidebar start-->
+<aside>
+    <div id="sidebar"  class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu" id="nav-accordion">
+        
+            <a href="index.php"><p class="centered"><img src="<?php echo PUBLIC_IMG_PATH.LOGO_BLACK_BG; ?>" class="img-circle" width="60"></p>
+            <h5 class="centered">首页</h5></a>
+              
+
+            <li class="sub-menu">
+                <a <?php FP::isUnfold($activeBar_, 1); ?> href="javascript:;" >
+                    <i class="fa fa-tasks"></i>
+                    <span><?php if ($role != ADMIN) {echo "我的";}else{echo "全部";} ?>精品</span>
+                </a>
+                <ul class="sub">
+                    <li <?php FP::isUnfold($activeBar_, 1, 1); ?>><a  href="entityTable.php?type_id=1">宇宝 </a></li>
+                    <li <?php FP::isUnfold($activeBar_, 1, 2); ?>><a  href="entityTable.php?type_id=2">庄园 </a></li>
+                    <li <?php FP::isUnfold($activeBar_, 1, 3); ?>><a  href="entityTable.php?type_id=3">农场 </a></li>
+                    <li <?php FP::isUnfold($activeBar_, 1, 4); ?>><a  href="entityTable.php?type_id=4">基地 </a></li>
+                </ul>
+            </li>
+
+            <li class="sub-menu">
+                <a <?php FP::isUnfold($activeBar_, 2); ?> href="javascript:;" >
+                    <i class="fa fa-tasks"></i>
+                    <span><?php if ($role != ADMIN) {echo "我的";}else{echo "全部";} ?>站点</span>
+                </a>
+                <ul class="sub">
+                    <li <?php FP::isUnfold($activeBar_, 2, 1); ?>><a  href="entityTable.php?type_id=11">网点 </a></li>
+                    <li <?php FP::isUnfold($activeBar_, 2, 2); ?>><a  href="entityTable.php?type_id=12">爱心 </a></li>
+                    <li <?php FP::isUnfold($activeBar_, 2, 3); ?>><a  href="entityTable.php?type_id=13">单位 </a></li>
+                    <li <?php FP::isUnfold($activeBar_, 2, 4); ?>><a  href="entityTable.php?type_id=14">个人 </a></li>
+                </ul>
+            </li>
+
+            <li class="sub-menu">
+                <a <?php FP::isUnfold($activeBar_, 3); ?> href="javascript:;" >
+                    <i class="fa fa-tasks"></i>
+                    <span><?php if ($role != ADMIN) {echo "我的";}else{echo "全部";} ?>基站</span>
+                </a>
+                <ul class="sub">
+                    <li <?php FP::isUnfold($activeBar_, 3, 1); ?>><a  href="entityTable.php?type_id=21">VSAT</a></li>
+                </ul>
+            </li>
+
+            <?php if($role == ADMIN){ ?>
+            <li class="sub-menu">
+                <a <?php FP::isUnfold($activeBar_, 4); ?> href="javascript:;" >
+                    <i class="fa fa-tasks"></i>
+                    <span>用户管理</span>
+                </a>
+                <ul class="sub">
+                    <li <?php FP::isUnfold($activeBar_, 4, 1); ?>><a  href="userTable.php?type_id=100">用户列表</a></li>
+                    <li <?php FP::isUnfold($activeBar_, 4, 2); ?>><a  href="addUserByAdmin.php">创建用户</a></li>
+                </ul>
+            </li>
+            <?php } ?>
+
+
+        </ul>
+        <!-- sidebar menu end-->
+    </div>
+</aside>
+<!--sidebar end-->

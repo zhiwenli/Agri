@@ -1,0 +1,970 @@
+ /*comprehensive search*/
+.hiddenEle{
+	display: none;
+}
+
+.comprehensiveSearchBox{
+  position: absolute;
+  top: 100px;
+  left: 10px;
+  z-index: 99;
+
+  width: 320px;
+  max-height: 500px;
+
+  border-style: ridge;
+  border-width: 1px;
+  border-color: rgba(150,150,150,0.6);
+  border-radius: 5px;
+  background: rgba(55, 55, 55, 0.75);
+}
+
+.comprehensiveSearchBox input{
+	color: white;
+	background-color: rgba(55, 55, 55, 0.4);
+}
+
+.comprehensiveSearchBox p{
+	color: white;
+}
+
+.comprehensiveSearchBox_close {
+  position: absolute;
+  width: 20px;
+  right: -8px;
+  top: -8px;
+  filter: invert(100%); /*颜色翻转*/
+  opacity: 0.7;
+  
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+  -moz-box-shadow: 1px 1px 3px #000;
+  -webkit-box-shadow: 1px 1px 3px #000;
+  box-shadow: 1px 1px 3px #000;
+}
+
+.comprehensiveSearchBox_close:hover { opacity: 1; }
+
+.comprehensiveSearchBox_header{
+  width: auto;
+  height: 30px;
+  background-color: rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.comprehensiveSearchBox_header_type{
+  float: left;
+  width: 63.4px;
+  height: 30px;
+  padding: 1px 1px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.comprehensiveSearchBox_header_type:hover{
+  /*background-color: #5596de;*/
+  cursor: pointer;
+}
+
+.comprehensiveSearchBox_header_type_selected{
+  background-color: #5596de;
+}
+
+.comprehensiveSearchBox_header_type > p{
+  margin: 5px auto;
+  font-size: 13px;
+  color: white;
+}
+
+.comprehensiveSearchBox_mainContent{
+  width: auto;
+  max-height: 465px;
+  padding-left: 10px;
+  overflow: hidden;
+}
+
+/*tjyb*/
+.tjyb{
+	overflow-y: auto;
+	max-height: 465px;
+}
+
+.poiResultListLevel1_YBicon{
+	float: left;
+    margin-top: 4px;
+    width: 30px;
+    height: 35px;
+    background: url(/public/img/YBJP_30_30.png) no-repeat;
+    background-size: 30px 30px;
+}
+/*end od tjyb*/
+
+/*simple search*/
+.simple_search{
+	margin: 10px 10px 10px 0px;
+}
+
+.simple_search_input > input{
+	float: left;
+	height: 30px;
+	width: 255px;
+	padding-right: 22px;
+	box-sizing: border-box;
+}
+
+.simple_search_input > i{
+	position: absolute;
+	right: 58px;
+	margin-top: 5px;
+	height: 20px;
+	width: 20px;
+	opacity: 0.6;
+	filter: invert(100%);
+	background: url(/public/img/mainImage.png) no-repeat -27px -50px;
+}
+
+.simple_search_input > i:hover{
+	cursor: pointer;
+	opacity: 0.8;
+}
+
+.simple_search_input > button{
+	margin-left: 3px;
+	height: 30px;
+	width: 40px;
+	background: url(/public/img/mainImage.png) no-repeat -314px -136px;
+	border-style: none;
+	filter: brightness(1.5);
+}
+
+.search_suggest{
+  /*display: none;*/
+  list-style-type:none;
+  margin-top: 2px;
+  margin-bottom: 10px;
+  padding-left: 0px;
+  white-space: nowrap;
+}
+
+.search_suggest > li{
+  font-size: 12px;
+  width: 225px;
+  margin-bottom: 2px;
+  overflow: hidden;
+  color: white;
+  cursor:pointer;
+}
+
+.search_suggest > li > small{
+  color: gray;
+}
+
+.hot_city > label{
+	color: white;
+	font-weight: normal;
+	margin-top: 5px;
+	margin-right: 5px;
+	opacity: 0.8;
+}
+
+/*end of simple search*/
+
+/*poi search list*/
+.poi_type{
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.poiListLevel1{
+  width: 300px;
+  height: 50px;
+
+  margin: 15px 15px;
+}
+
+.poiListLevel1_icon{
+  float: left;
+  margin-top: 8px;
+  width: 27px;
+  height: 30px;
+}
+
+.poiListLevel1_icon:hover{
+  cursor: pointer;
+}
+
+.goverment{
+  background: url(/public/img/indexImage.png) no-repeat -185px -407px;
+}
+
+.education{
+  background: url(/public/img/indexImage.png) no-repeat -220px -407px;
+}
+
+.hospital{
+  background: url(/public/img/indexImage.png) no-repeat -255px -407px;
+}
+
+.life{
+  background: url(/public/img/indexImage.png) no-repeat -290px -407px;
+}
+
+.traffic{
+  background: url(/public/img/indexImage.png) no-repeat -325px -407px;
+}
+
+.bdny{
+	background: url(/public/img/YXWD_30_30.png) no-repeat -3px -3px;
+	background-size: 33px 37px;
+}
+
+.poiListLevel2{
+  float: left;
+  max-width: 220px;
+  margin-left: 10px;
+}
+
+.poiListLevel2 > h{
+  margin: 2px 0px;
+  color: #e0e658;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.poiListLevel2 > h:hover{
+	cursor: pointer;
+}
+
+.poiListLevel3{
+}
+
+.poiListLevel3 > p{
+  display: inline;
+  margin-right: 3px;
+  font-size: 12px;
+}
+
+.poiListLevel3 > p:hover{
+	cursor: pointer;
+}
+/*end of poi search list*/
+
+
+/*poi search result list*/
+.poi_type_search_result{
+  max-height: 410px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.poi_type_search_result_header{
+  margin: 5px 15px 2px 5px;
+  font-size: 13px;
+  background-color: #5f5f5f;
+}
+
+.poi_type_search_result_header > p{
+  display: inline;
+}
+
+.poi_type_search_result_header > label{
+  display: inline;
+  font-weight: bold;
+  color: #f39700;
+}
+
+.poi_type_search_result_header > h6{
+	display: inline;
+	float: right;
+    margin: 2px;
+	font-size: 13px;
+	font-weight: normal;
+	color: #e0e658;
+}
+
+.poi_type_search_result_header > h6:hover{
+	cursor: pointer;
+}
+
+.poi_type_search_result_list_level1{
+	width: 270px;
+	overflow: hidden; /*使得子元素浮动时div高度自适应*/
+	margin: 15px 5px;
+}
+
+.poi_type_search_result_list_level1:hover{
+	cursor: pointer;
+	background-color: #5f5f5f;
+}
+
+.poiResultListLevel1_icon{
+	float: left;
+    margin-top: 4px;
+    width: 25px;
+    height: 35px;
+    background: url(/public/img/spotlight_poi.png) no-repeat;
+    background-size: 20px 35px;
+}
+
+/*1到10标*/
+.locationIcon1{
+	background-position: -4px -170px;
+}
+.locationIcon2{
+	background-position: -30px -170px;
+}
+.locationIcon3{
+	background-position: -56px -170px;
+}
+.locationIcon4{
+	background-position: -82px -170px;
+}
+.locationIcon5{
+	background-position: -108px -170px;
+}
+.locationIcon6{
+	background-position: -135px -170px;
+}
+.locationIcon7{
+	background-position: -161px -170px;
+}
+.locationIcon8{
+	background-position: -188px -170px;
+}
+.locationIcon9{
+	background-position: -215px -170px;
+}
+.locationIcon10{
+	background-position: -243px -170px;
+}
+
+.poiResultListLevel2{
+  float: left;
+  margin-left: 10px;
+  max-width: 200px;
+}
+
+.poiResultListLevel2 > h{
+  margin: 2px 0px;
+  color: #e0e658;
+  font-size: 13px;
+}
+
+.poiResultListLevel3 > p{
+  margin: 2px 0px;
+  font-size: 12px;
+}
+
+.poi_type_search_result_navi{
+	float: right;
+    width: 25px;
+    height: 25px;
+    background: url(/public/img/naviText.png) no-repeat;
+    background-size: 25px;
+}
+
+/*end of poi search result list*/
+
+
+/*drive route*/
+.drive_route{
+
+}
+
+.search_options{
+	display: inline-block;
+	margin-top: 10px;
+	margin-bottom: 6px;
+	margin-right: 10px;
+}
+
+.exchangeIcon{
+	float: left;
+	height: 23px;
+	width: 23px;
+	margin-top: 15px;
+	background: url(/public/img/mainImage.png) no-repeat -205px -80px;
+	transform:rotate(90deg); /*90度旋转div*/
+	filter: brightness(1.5);
+}
+
+.exchangeIcon:hover{
+	cursor: pointer;
+	filter: brightness(2);
+}
+
+.location_inputs{
+	float: left;
+}
+
+.location_input{
+	height: 30px;
+	width: 270px;
+}
+
+.location_input > input{
+	float: left;
+	width: 270px;
+	height: 30px;
+	padding-left: 15px;
+	padding-right: 28px;
+	border-left-style: none;
+	border-right-style: none;
+	box-sizing: border-box;
+}
+
+.drive_route_input_start_icon{
+	position: absolute;
+	left: 35px;
+	height: 10px;
+	width: 10px;
+	margin-top: 10px;
+	background: url(http://webmap1.map.bdstatic.com/wolfman/static/common/images/new/start_f51000d.png);
+    background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+
+.drive_route_input_through_icon{
+	position: absolute;
+	left: 35px;
+	height: 10px;
+	width: 10px;
+	margin-top: 10px;
+	background: url(http://webmap1.map.bdstatic.com/wolfman/static/common/images/new/start_f51000d.png);
+    background-repeat: no-repeat;
+	background-position: 0px 0px;
+	filter: hue-rotate(90deg);
+}
+
+.drive_route_input_end_icon{
+	position: absolute;
+	left: 35px;
+	height: 10px;
+	width: 10px;
+	margin-top: 10px;
+	background: url(http://webmap1.map.bdstatic.com/wolfman/static/common/images/new/end_f68595d.png);
+    background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+
+.drive_route_add_icon{
+	position: absolute;
+	right: 18px;
+	height: 20px;
+	width: 20px;
+	margin-top: 5px;
+	opacity: 0.8;
+	background: url(http://webmap1.map.bdstatic.com/wolfman/static/common/images/ui3/mo_banner_b38c3ca.png);
+    background-repeat: no-repeat;
+	background-position: 1px -221px;
+}
+
+.drive_route_add_icon:hover{
+	cursor: pointer;
+	opacity: 1;
+}
+
+.drive_route_remove_icon{
+	position: absolute;
+    right: 18px;
+    height: 20px;
+    width: 20px;
+    margin-top: 5px;
+    opacity: 0.8;
+    background: url(http://webmap1.map.bdstatic.com/wolfman/static/common/images/ui3/mo_banner_b38c3ca.png);
+    background-repeat: no-repeat;
+    background-position: -17px -221px;
+}
+.drive_route_remove_icon:hover{
+	cursor: pointer;
+	opacity: 1;
+}
+
+.drive_route_clear_icon{
+	position: absolute;
+    right: 40px;
+    height: 20px;
+    width: 20px;
+    margin-top: 6px;
+    opacity: 0.7;
+	background-image: url(/public/img/searchbox_f175577.png);
+	background-repeat: no-repeat;
+}
+.drive_route_clear_icon:hover{
+	cursor: pointer;
+	opacity: 1;
+}
+
+.search_button{
+	height: 30px;
+	width: 50px;
+	float: right;
+	border-style: none;
+	margin-top: 5px;
+	margin-right: 75px;
+	background: url(/public/img/mainImage.png) no-repeat -311px -136px;
+	filter: brightness(1.5);
+}
+.search_button:hover{
+	filter: brightness(2);
+}
+
+.external_search_button{
+	height: 30px;
+	width: 50px;
+	margin-top: 5px;
+	margin-left: 75px;
+	border-style: none;
+	background: url(/public/img/arriba.png) no-repeat;
+	background-size: 25px 25px;
+	background-position: 10px 4px;
+}
+.external_search_button:hover{
+	filter: brightness(1.3);
+}
+
+.drive_strategy{
+	display: inline-block;
+	margin-top:5px;
+	font-size: 12px;
+}
+
+.drive_strategy ul{
+	padding: 0px;
+    margin: 0px;
+    list-style: none;
+}
+
+.drive_strategy li{
+	float: left;
+    display: inline;
+    text-align: center;
+    line-height: 18px;
+    color: #FFF;
+    width: 99px;
+    height: 18px;
+    box-sizing: border-box;
+}
+
+.drive_strategy li:hover{
+	cursor: pointer;
+	/*background: #5596de;*/
+}
+
+.dir_fast_hov{
+    border: 1px solid #bbb;
+    border-right: none;
+}
+
+.dir_shor{
+    border: 1px solid #bbb;
+}
+
+.dir_walk{
+    border: 1px solid #bbb;
+    border-left: none;
+}
+
+.policySelected{
+	background: #5596de;
+    color: #FFF;
+}
+
+.drive_route_result_sum{
+	width: 300px;
+	height: 30px;
+	margin-bottom: 4px;
+	background-color: #e8eff6;
+
+	border-style: ridge;
+	border-width: 1px;
+	border-color: #e8eff6;
+	border-radius: 3px;
+}
+
+.drive_route_result_sum > p{
+	margin: 5px 10px;
+	color: #5596de;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.drive_route_result_list{
+	margin-top: 2px;
+	margin-right: 10px;
+	max-height: 290px;
+	overflow-y: auto;
+}
+
+.drive_route_result_list_startIcon{
+	float: left;
+    display: inline;
+    width: 23px;
+    height: 23px;
+    margin-left: 2px;
+    margin-right: 5px;
+    background: url(/public/img/mainImage.png) no-repeat -4px -4px;
+}
+
+.drive_route_result_list_start > p{
+	font-size: 14px;
+	font-weight: bold;
+	color: #e0e658;
+}
+
+.drive_route_result_list_throughIcon{
+	float: left;
+    display: inline;
+    width: 23px;
+    height: 23px;
+    margin-left: 2px;
+    margin-right: 5px;
+    background: url(/public/img/mainImage.png) no-repeat -322px -4px;
+}
+
+.drive_route_result_list_through > p{
+	font-size: 14px;
+	font-weight: bold;
+	color: #e0e658;
+}
+
+.drive_route_result_list_end > p{
+	font-size: 14px;
+	font-weight: bold;
+	color: #e0e658;
+}
+
+.drive_route_result_list_endIcon{
+	float: left;
+    display: inline;
+    width: 23px;
+    height: 23px;
+    margin-left: 2px;
+    margin-right: 5px;
+    background: url(/public/img/mainImage.png) no-repeat -32px -4px;
+}
+
+.drive_route_result_list_ol span{
+	font-size: 13px;
+}
+
+.drive_route_result_list_ol li{
+	margin: 3px 0px;
+	padding: 6px 1px;
+	color: #5596de;
+	cursor: pointer;
+	padding-right: 5px;
+	border-bottom-style: dotted;
+	border-bottom-width: 1px;
+	border-bottom-color: gray;
+}
+
+.drive_route_result_list_ol li:hover{
+	background-color: rgba(100, 100, 100, 0.5);
+}
+
+.drive_route_details_icon{
+	float: right;
+    display: inline;
+    margin-top: 6px;
+    width: 7px;
+    height: 5px;
+    cursor: pointer;
+    background: url(/public/img/mainImage.png) no-repeat -20px -61px;
+}
+
+.flip_horizintal{
+	transform: rotate(180deg);
+}
+
+.drive_route_details > p{
+	margin-top: 7px;
+	margin-bottom: 0px;
+}
+
+/*end of drive route*/
+
+
+/*public traffic route*/
+.bus_clik{
+	/*display: table-row;*/
+	margin: 5px 0;
+	padding-bottom: 4px;
+
+	border-style: solid;
+	border-width: 1px;
+	border-color: #5596de;
+	border-bottom-right-radius: 7px;
+	border-top-left-radius: 10px;
+}
+
+.pubTfc_route_clear_icon{
+	position: absolute;
+    right: 18px;
+    height: 20px;
+    width: 20px;
+    margin-top: 6px;
+    opacity: 0.7;
+	background-image: url(/public/img/searchbox_f175577.png);
+	background-repeat: no-repeat;
+}
+
+.pubTfcSearchBtn{
+	height: 30px;
+    width: 50px;
+    float: right;
+    border-style: none;
+    margin-top: 5px;
+    margin-right: 75px;
+    background: url(/public/img/mainImage.png) no-repeat -311px -136px;
+    filter: brightness(1.5);
+}
+.pubTfcSearchBtn:hover{
+	filter: brightness(2);
+}
+
+
+.pubTfc_route_clear_icon:hover{
+	cursor: pointer;
+	opacity: 1;
+}
+
+.publicTraffic_strategy{
+	display: inline-block;
+	margin-top: 5px;
+	font-size: 12px;
+}
+
+.publicTraffic_strategy ul{
+	padding: 0px;
+    margin: 0px;
+    list-style: none;
+}
+
+.publicTraffic_strategy li{
+	float: left;
+    display: inline;
+    text-align: center;
+    line-height: 18px;
+    color: #FFF;
+    width: 74px;
+    height: 18px;
+    box-sizing: border-box;
+}
+
+.publicTraffic_strategy li:hover{
+	cursor: pointer;
+	/*background: #5596de;*/
+}
+
+.fast_hov{
+    border: 1px solid #bbb;
+    border-right: none;
+}
+
+.no_subway{
+    border: 1px solid #bbb;
+    border-right: none;
+}
+
+.few_transfer{
+    border: 1px solid #bbb;
+    border-right: none;
+}
+
+.mini_walk{
+	border: 1px solid #bbb;
+}
+
+.publicTraffic_search_result_list{
+	max-height: 290px;
+	margin-right: 10px;
+	overflow-y: auto;
+}
+
+.busLineP_serial{
+	width: 18px;
+	height: 18px;
+	background-color: #5596de;
+	border-radius: 6px;
+
+	float: left;
+}
+
+.busLineP_serial span{
+	height: 18px;
+	line-height: 16px;
+	display: block;
+	color: white;
+	text-align: center;
+}
+
+.transfer_top_con{
+	cursor: pointer;
+	background-color: rgba(100, 100, 100, 0.9);
+	padding-bottom: 5px;
+}
+
+.transfer_top_con h5{
+	margin: 1px 20px;
+	color: #e0e658;
+}
+
+.cost_overview{
+	display: inline;
+	margin-top: 5px;
+	border-style: solid;
+    border-color: rgba(100, 100, 100, 0.9);
+}
+
+.cost_overview p{
+	font-size: 13px;
+	margin: 2px 10px 0px 20px;
+	float: left;
+}
+
+.cost_overview label{
+	font-size: 13px;
+	margin: 2px 3px;
+	float: right;
+	color: gray;
+}
+
+.pubTfc_result_sum{
+	width: 300px;
+	height: 30px;
+	margin-bottom: 5px;
+	background-color: #e8eff6;
+
+	border-style: ridge;
+	border-width: 1px;
+	border-color: #e8eff6;
+	border-radius: 3px;
+}
+.pubTfc_result_sum > p{
+	margin: 5px 10px;
+	color: #5596de;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.publicTraffic_search_result_list_route{
+	margin: 5px 10px;
+	max-height: 410px;
+}
+
+.publicTraffic_route_result_list_startIcon{
+	float: left;
+    display: inline;
+    width: 23px;
+    height: 23px;
+    margin-left: 2px;
+    margin-right: 5px;
+    background: url(/public/img/mainImage.png) no-repeat -4px -4px;
+}
+
+.publicTraffic_route_result_list_start > p{
+	font-size: 14px;
+	font-weight: bold;
+	margin: 5px 0px 10px 0px;
+	color: #e0e658;
+}
+
+.publicTraffic_route_result_list_end{
+	margin-top: 0px;
+}
+
+.publicTraffic_route_result_list_end > p{
+	font-size: 14px;
+	font-weight: bold;
+	margin: 5px 0px;
+	color: #e0e658;
+}
+
+.publicTraffic_route_result_list_endIcon{
+	float: left;
+    display: inline;
+    width: 23px;
+    height: 23px;
+    margin-left: 2px;
+    margin-right: 5px;
+    background: url(/public/img/mainImage.png) no-repeat -32px -4px;
+}
+
+.publicTraffic_route_result_list hr{
+	 height:2px;
+	 border:none;
+	 border-top:1px solid gray;
+	 margin: 0px -7px 1px 5px;
+}
+
+.publicTraffic_route_result_list2{
+	display: inline-block;
+	width: 260px;
+	font-size: 12px;
+	margin-left: 5px;
+}
+.publicTraffic_route_result_list2:hover{
+	background-color: rgba(100, 100, 100, 0.5);
+	cursor: pointer;
+}
+
+.metro_pub_left {
+    float: left;
+    display: inline;
+    width: 22px;
+    background: url(/public/img/mainImage.png) -205px -7px no-repeat;
+    margin: 0px 0px 0px -2px;
+    height: 15px;
+    line-height: 20px;
+}
+
+.publicTraffic_route_result_list2 p{
+	margin: 0px 0px 0px 2px;
+	max-width: 200px;
+	float: left;
+}
+
+.publicTraffic_route_result_list2 h6{
+	float: right;
+	margin: 0 5px;
+	color: gray;
+	font-size: 12px;
+}
+
+.walkIcon{
+	background-position: -206px -7px;
+}
+.metroIcon{
+	background-position: -224px -7px;
+}
+.busIcon{
+	background-position: -183px -7px;
+}
+/*end of public traffic route
+
+
+/*mapNaviList*/
+.mapNaviList{
+	z-index: 99;
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+}
+
+.mapNavi{
+	margin: 5px 10px;
+	background-color: rgba(255, 255, 255, 0.7);
+	text-align:center;
+	font-size: 13px;
+	color: black;
+	border-radius: 8px;
+	border-style: solid;
+	border-color: #555;
+}
+.mapNavi:hover{
+	cursor: pointer;
+	background-color: rgba(255, 255, 255, 0.9);
+}
+

@@ -1,0 +1,33 @@
+<?php 
+  include 'header.lzW';
+  include 'sidebar.lzW';
+?>
+
+
+<section id="main-content">
+  <section class="wrapper site-min-height">
+    <div class="row mt">
+      <div class="col-md-12">
+        <div class="showback">
+          <h4><i class="fa fa-angle-right"></i>提示</h4>
+          <?php if ($tipType == 'error') {
+            echo '<div class="alert alert-danger">'.$tipMsg.'</div>';
+          }elseif($tipType == 'warning'){
+            echo '<div class="alert alert-warning">'.$tipMsg.'</div>';
+          }elseif($tipType == 'error'){
+            echo '<div class="alert alert-info">'.$tipMsg.'</div>';
+          }elseif($tipType == 'success'){
+            echo '<div class="alert alert-success">'.$tipMsg.'</div>';
+          }else{
+            echo '<div class="alert alert-danger">未定义提示类型</div>';
+          }
+          ?>
+        </div><!-- /showback -->
+      </div><!-- /col-md-12 -->
+    </div><!-- /row -->
+  </section><!--/wrapper -->
+</section><!-- /MAIN CONTENT -->
+
+<?php
+  include 'footer.lzW';
+?>

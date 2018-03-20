@@ -1,0 +1,118 @@
+<style>
+    @import url(/Cesium/Widgets/widgets.css);
+ </style>
+
+<div id="cesiumContainer" style="height:490px;">
+
+</div>
+<script src="/Cesium/Cesium.js"></script> 
+<script type="text/javascript" src="/public/javascripts/imageryConfContainer.js"></script>
+
+
+<script type="text/javascript">
+
+//获取影像底图模型。FORM l_imageryView.js
+var imageryViewModels = getImageryViews();
+
+
+//创建主视图
+var viewer = new Cesium.Viewer('cesiumContainer', {
+  baseLayerPicker : true,
+  showRenderLoopErrors : false,
+  imageryProviderViewModels: imageryViewModels,
+  selectedImageryProviderViewModel: imageryViewModels[12]
+});
+
+//注记
+var layers = viewer.scene.imageryLayers;
+var cn_annotation=new Cesium.WebMapTileServiceImageryProvider({
+  url :'http://t0.tianditu.com/cia_w/wmts',
+  layer : 'cia',
+  style : 'default',
+  format : 'tiles',
+  tileMatrixSetID : 'w'
+});
+layers.add(new Cesium.ImageryLayer(cn_annotation));
+
+//加载亚洲国境线
+viewer.dataSources.add(Cesium.KmlDataSource.load('/data/permanent/kml/asia-boundary.kml'));
+
+
+//设置logo、时间轴、动画容器隐藏
+document.getElementsByClassName("cesium-viewer-timelineContainer")[0].style.display = "none";
+document.getElementsByClassName("cesium-viewer-animationContainer")[0].style.display = "none";
+document.getElementsByClassName("cesium-infoBox")[0].style.display = "none";
+document.getElementsByClassName("cesium-viewer-fullscreenContainer")[0].style.display = "none";
+
+viewer.bottomContainer.style.display = "none";
+
+//初始动画
+Cesium.Camera.DEFAULT_VIEW_RECTANGLE = Cesium.Rectangle.fromDegrees(70, 55, 137, 5);
+viewer.camera.setView({
+  destination: Cesium.Cartesian3.fromDegrees(-112,-90,1000000000)
+});
+viewer.camera.flyHome(5); //seconds
+
+
+//拾取坐标
+// Mouse over the globe to see the cartographic position
+handler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas);
+handler.setInputAction(function(click) {
+    var cartesian = viewer.camera.pickEllipsoid(click.position, viewer.scene.globe.ellipsoid);
+    if (cartesian) {
+        var cartographic = Cesium.Cartographic.fromCartesian(cartesian);
+        var longitudeString = Cesium.Math.toDegrees(cartographic.longitude).toFixed(6);
+        var latitudeString = Cesium.Math.toDegrees(cartographic.latitude).toFixed(6);
+        console.log(longitudeString, latitudeString);
+
+        $("input[name=lat]").val(latitudeString);
+        $("input[name=lng]").val(longitudeString);
+
+        //拾取坐标后调用预览
+        startEntityPreview();
+    } else {
+        console.log("坐标拾取失败");
+    }
+}, Cesium.ScreenSpaceEventType.LEFT_DOUBLE_CLICK);
+
+//存储预览entity
+var previewMark = null;
+
+//预览
+function entityPreview(name, lat, lng, img, sourceId){
+  console.log("preview");
+
+  //清楚现有预览
+  if(previewMark){
+    viewer.entities.remove(previewMark);
+    previewMark = null;
+  }
+
+  var entity = {
+    name: "preview",
+    id : sourceId,
+    position: Cesium.Cartesian3.fromDegrees(lng, lat, 0),
+    billboard: {
+      image: img,
+      width: 40,
+      height: 40
+    },
+      label: {
+        text: name,
+        font: "bold 12pt monospace",
+        verticalOrigin: Cesium.VerticalOrigin.BOTTOM,
+        pixelOffset: new Cesium.Cartesian2(0, -30),
+        fillColor: new Cesium.Color(254/255, 242/255, 58/255),
+        style: Cesium.LabelStyle.FILL_AND_OUTLINE
+      }
+  };
+
+  previewMark = viewer.entities.add(entity);
+
+  viewer.camera.flyTo({
+    destination : Cesium.Cartesian3.fromDegrees(lng, lat, 20000.0)
+  });
+}
+
+
+</script>

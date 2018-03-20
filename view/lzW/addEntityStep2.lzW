@@ -1,0 +1,378 @@
+<?php 
+  include 'header.lzW';
+  include 'sidebar.lzW';
+?>
+
+<style type="text/css">
+  body{
+    overflow: hidden;
+  }
+</style>
+
+<!-- **********************************************************************************************************************************************************
+MAIN CONTENT
+*********************************************************************************************************************************************************** -->
+<!--main content start-->
+<section id="main-content">
+  <section class="wrapper site-min-height" style="min-height: 750px;">
+  <h3><i class="fa fa-angle-right"></i> 新增数据项</h3>
+
+
+    <div class="row mt">
+      <div class="col-lg-9" style="width: 65%;">
+        <div class="form-panel" style="">
+          <h4 class="mb"><i class="fa fa-angle-right"></i> 2 添加属性描述窗口详细信息 <i class="fa fa-question-circle" title="光标置于每个输入框上，预览窗口中虚线标记部分即为对应元素（红色：图片，黄色：文字，金色：链接）"></i></h4>
+          <p style="color: blue;">提示：光标置于每个输入框时，预览窗口将勾绘出对应的元素位置（红色：图片；黄色：文字；金色：外部链接）。录入数据后，请回车并预览效果。</p>
+
+          <form class="form-horizontal style-form" id="addEntityStep2" onsubmit="return updateEntity(this);">
+            <input type="hidden" name="requestOpt" value="_update">
+            <input type="hidden" name="type_id" value="<?php echo $_GET['type_id'];?>" >
+            <input type="hidden" name="entity_id" value="<?php echo $_GET['entity_id'];?>" >
+            <input type="hidden" name="status" value="5"> <!-- 更新时请求设置状态为已保存待提交审核 -->
+          
+            <div class="form-group" style="border-bottom-style: solid;border-bottom-color: #f1b828;border-bottom-width: 2px;">
+            </div>
+            
+            <div class="form-group" style="border-bottom-style: solid;border-bottom-color: #f1b828;border-bottom-width: 2px;">
+              <label class="col-sm-2 col-sm-2 control-label">窗口标题</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="窗口标题" name="popDialogBox_title" value="<?php echo FP::noContent($D['popDialogBox_title']) ? '北斗农业·中国' : $D['popDialogBox_title']; ?>" onmouseover="mouseoverInputEle(this);" onmouseout="mouseoutInputEle(this);" onchange="updateEntity(this);">
+                <span class="help-block" id="popDialogBox_title_tips">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">政府栏图片 <i class="fa fa-question-circle" title="建议尺寸为300*60像素"></i></label>
+              <div class="col-sm-10">
+                <span class="" id="tips">建议尺寸为300*60像素，保存为png或者jpg格式,大小不超过2MB</span>
+                <input type="file" class="form-control" placeholder="政府栏图片" onchange="fileInputChk(this); updateEntity(this);" name="popDialogBox_govImg" id="popDialogBox_govImg" accept="image/jpg,image/jpeg,image/png"  onmouseover="mouseoverInputEle(this);" onmouseout="mouseoutInputEle(this);">
+                <span class="help-block" id="popDialogBox_govImg_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group" style="border-bottom-style: solid;border-bottom-color: #f1b828;border-bottom-width: 2px;">
+              <label class="col-sm-2 col-sm-2 control-label">政府栏链接</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="http://" name="popDialogBox_govUrl"  value="<?php echo $D['popDialogBox_govUrl']; ?>"  onmouseover="mouseoverInputEle(this);" onmouseout="mouseoutInputEle(this);" onchange="updateEntity(this);">
+                <span class="help-block" id="popDialogBox_govUrl_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">产品背景图 <i class="fa fa-question-circle" title="建议尺寸为300*200像素"></i></label>
+              <div class="col-sm-10">
+                <span class="" id="tips">建议尺寸为300*200像素，保存为png或者jpg格式,大小不超过2MB</span>
+                <input type="file" class="form-control" placeholder="产品背景图" onchange="fileInputChk(this); updateEntity(this);" name="popDialogBox_descBg" accept="image/jpg,image/jpeg,image/png"  onmouseover="mouseoverInputEle(this);" onmouseout="mouseoutInputEle(this);">
+                <span class="help-block" id="popDialogBox_descBg_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">产品背景图链接</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="http://" name="popDialogBox_descUrl" value="<?php echo $D['popDialogBox_descUrl']; ?>" onmouseover="mouseoverInputEle(this);" onmouseout="mouseoutInputEle(this);" onchange="updateEntity(this);" onchange="updateEntity(this);">
+                <span class="help-block" id="popDialogBox_descUrl_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">描述文字1（中央位置）</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="描述文字1（中央位置）" name="popDialogBox_descText1"  value="<?php echo $D['popDialogBox_descText1']; ?>" onmouseover="mouseoverInputEle(this);" onmouseout="mouseoutInputEle(this);" onchange="updateEntity(this);">
+                <span class="help-block" id="popDialogBox_descText1_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">描述文字（图标右侧）</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="描述文字（图标右侧）" name="popDialogBox_descText2"  value="<?php echo $D['popDialogBox_descText2']; ?>" onmouseover="mouseoverInputEle(this);" onmouseout="mouseoutInputEle(this);" onchange="updateEntity(this);">
+                <span class="help-block" id="popDialogBox_descText2_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">替换现有图标 <i class="fa fa-question-circle" title="建议尺寸为50*50像素"></i></label>
+              <div class="col-sm-10">
+                <span class="" id="tips">建议尺寸为50*50像素，保存为png或者jpg格式,大小不超过2MB; 若未选择将使用默认或已有图标</span>
+                <input type="file" class="form-control" placeholder="产品图标" onchange="fileInputChk(this); updateEntity(this);" name="popDialogBox_descIcon" accept="image/jpg,image/jpeg,image/png" onmouseover="mouseoverInputEle(this);" onmouseout="mouseoutInputEle(this);">
+                <span class="help-block" id="popDialogBox_descIcon_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">二维码 <i class="fa fa-question-circle" title="建议尺寸为50*50像素"></i></label>
+              <div class="col-sm-10">
+                <span class="" id="tips">建议尺寸为50*50像素，保存为png或者jpg格式,大小不超过2MB</span>
+                <input type="file" class="form-control" placeholder="二维码" onchange="fileInputChk(this); updateEntity(this);" name="popDialogBox_2dBarcode" accept="image/jpg,image/jpeg,image/png" onmouseover="mouseoverInputEle(this);" onmouseout="mouseoutInputEle(this);">
+                <span class="help-block" id="popDialogBox_2dBarcode_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">条形码 <i class="fa fa-question-circle" title="建议尺寸为100*40像素"></i></label>
+              <div class="col-sm-10">
+                <span class="" id="tips">建议尺寸为100*40像素，保存为png或者jpg格式,大小不超过2MB</span>
+                <input type="file" class="form-control" placeholder="条形码" onchange="fileInputChk(this); updateEntity(this);" name="popDialogBox_barcode" accept="image/jpg,image/jpeg,image/png" onmouseover="mouseoverInputEle(this);" onmouseout="mouseoutInputEle(this);">
+                <span class="help-block" id="popDialogBox_barcode_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group" style="border-bottom-style: solid;border-bottom-color: #f39858;border-bottom-width: 4px;">
+              <label class="col-sm-2 col-sm-2 control-label">Logo <i class="fa fa-question-circle" title="建议尺寸为50*50像素"></i></label>
+              <div class="col-sm-10">
+                <span class="" id="tips">建议尺寸为50*50像素，保存为png或者jpg格式,大小不超过2MB</span>
+                <input type="file" class="form-control" placeholder="Logo" onchange="fileInputChk(this); updateEntity(this);" name="popDialogBox_logo" accept="image/jpg,image/jpeg,image/png" onmouseover="mouseoverInputEle(this);" onmouseout="mouseoutInputEle(this);">
+                <span class="help-block" id="popDialogBox_logo_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group" style="border-bottom-style: solid;border-bottom-color: #f1b828;border-bottom-width: 2px;">
+              <label class="col-sm-2 col-sm-2 control-label">工具栏-背景图片 <i class="fa fa-question-circle" title="建议尺寸为40*40像素"></i></label>
+              <div class="col-sm-10">
+                <span class="" id="tips">建议尺寸为300*150像素，保存为png或者jpg格式,大小不超过2MB，若未选择将不适用背景图片</span>
+                <input type="file" class="form-control" placeholder="工具栏1-图片" onchange="fileInputChk(this); updateEntity(this);" name="popDialogBox_toolsBg" accept="image/jpg,image/jpeg,image/png" onmouseover="mouseoverInputEle(this);" onmouseout="mouseoutInputEle(this);">
+                <span class="help-block" id="popDialogBox_toolsBg_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">工具栏1-图片 <i class="fa fa-question-circle" title="建议尺寸为40*40像素"></i></label>
+              <div class="col-sm-10">
+                <span class="" id="tips">建议尺寸为40*40像素，保存为png或者jpg格式,大小不超过2MB，若未选择将使用默认或已有图标</span>
+                <input type="file" class="form-control" placeholder="工具栏1-图片" onchange="fileInputChk(this); updateEntity(this);" name="popDialogBox_toolImg1" accept="image/jpg,image/jpeg,image/png" onmouseover="mouseoverInputEle(this);" onmouseout="mouseoutInputEle(this);">
+                <span class="help-block" id="popDialogBox_toolImg1_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">工具栏1-文字</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="工具栏1-文字" name="popDialogBox_toolText1"  value="<?php echo $D['popDialogBox_toolText1']; ?>" onmouseover="mouseoverInputEle(this);" onmouseout="mouseoutInputEle(this);" onchange="updateEntity(this);">
+                <span class="help-block" id="popDialogBox_toolText1_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group" style="border-bottom-style: solid;border-bottom-color: #f1b828;border-bottom-width: 2px;">
+              <label class="col-sm-2 col-sm-2 control-label">工具栏1-链接</label>
+              <div class="col-sm-10">
+                <span class="" id="tips">如需区分电脑/手机访问链接，请电脑版链接在前，手机版链接在后，并以英文分号(;)分割。</span>
+                <input type="text" class="form-control" placeholder="http://" name="popDialogBox_toolUrl1"  value="<?php echo $D['popDialogBox_toolUrl1']; ?>" onmouseover="mouseoverInputEle(this);" onmouseout="mouseoutInputEle(this);" onchange="updateEntity(this);">
+                <span class="help-block" id="popDialogBox_toolUrl1_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">工具栏2-图片 <i class="fa fa-question-circle" title="建议尺寸为40*40像素"></i></label>
+              <div class="col-sm-10">
+                <span class="" id="tips">建议尺寸为40*40像素，保存为png或者jpg格式,大小不超过2MB，若未选择将使用默认或已有图标</span>
+                <input type="file" class="form-control" placeholder="工具栏2-图片" onchange="fileInputChk(this); updateEntity(this);" name="popDialogBox_toolImg2" accept="image/jpg,image/jpeg,image/png" onmouseover="mouseoverInputEle(this);" onmouseout="mouseoutInputEle(this);">
+                <span class="help-block" id="popDialogBox_toolImg2_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">工具栏2-文字</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="工具栏2-文字" name="popDialogBox_toolText2"  value="<?php echo $D['popDialogBox_toolText2']; ?>" onmouseover="mouseoverInputEle(this);" onmouseout="mouseoutInputEle(this);" onchange="updateEntity(this);">
+                <span class="help-block" id="popDialogBox_toolText2_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group" style="border-bottom-style: solid;border-bottom-color: #f1b828;border-bottom-width: 2px;">
+              <label class="col-sm-2 col-sm-2 control-label">工具栏2-链接</label>
+              <div class="col-sm-10">
+                <span class="" id="tips">如需区分电脑/手机访问链接，请电脑版链接在前，手机版链接在后，并以英文分号(;)分割。</span>
+                <input type="text" class="form-control" placeholder="http://" name="popDialogBox_toolUrl2"  value="<?php echo $D['popDialogBox_toolUrl2']; ?>" onmouseover="mouseoverInputEle(this);" onmouseout="mouseoutInputEle(this);" onchange="updateEntity(this);">
+                <span class="help-block" id="popDialogBox_toolUrl2_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">工具栏3-图片 <i class="fa fa-question-circle" title="建议尺寸为40*40像素"></i></label>
+              <div class="col-sm-10">
+                <span class="" id="tips">建议尺寸为40*40像素，保存为png或者jpg格式,大小不超过2MB，若未选择将使用默认或已有图标</span>
+                <input type="file" class="form-control" placeholder="工具栏3-图片" onchange="fileInputChk(this); updateEntity(this);" name="popDialogBox_toolImg3" accept="image/jpg,image/jpeg,image/png" onmouseover="mouseoverInputEle(this);" onmouseout="mouseoutInputEle(this);">
+                <span class="help-block" id="popDialogBox_toolImg3_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">工具栏3-文字</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="工具栏3-文字" name="popDialogBox_toolText3"  value="<?php echo $D['popDialogBox_toolText3']; ?>" onmouseover="mouseoverInputEle(this);" onmouseout="mouseoutInputEle(this);" onchange="updateEntity(this);">
+                <span class="help-block" id="popDialogBox_toolText3_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group" style="border-bottom-style: solid;border-bottom-color: #f1b828;border-bottom-width: 2px;">
+              <label class="col-sm-2 col-sm-2 control-label">工具栏3-链接</label>
+              <div class="col-sm-10">
+                <span class="" id="tips">如需区分电脑/手机访问链接，请电脑版链接在前，手机版链接在后，并以英文分号(;)分割。</span>
+                <input type="text" class="form-control" placeholder="http://" name="popDialogBox_toolUrl3"  value="<?php echo $D['popDialogBox_toolUrl3']; ?>" onmouseover="mouseoverInputEle(this);" onmouseout="mouseoutInputEle(this);" onchange="updateEntity(this);">
+                <span class="help-block" id="popDialogBox_toolUrl3_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">工具栏4-图片 <i class="fa fa-question-circle" title="建议尺寸为40*40像素"></i></label>
+              <div class="col-sm-10">
+                <span class="" id="tips">建议尺寸为40*40像素，保存为png或者jpg格式,大小不超过2MB，若未选择将使用默认或已有图标</span>
+                <input type="file" class="form-control" placeholder="工具栏4-图片" onchange="fileInputChk(this); updateEntity(this);" name="popDialogBox_toolImg4" accept="image/jpg,image/jpeg,image/png" onmouseover="mouseoverInputEle(this);" onmouseout="mouseoutInputEle(this);">
+                <span class="help-block" id="popDialogBox_toolImg4_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">工具栏4-文字</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="工具栏4-文字" name="popDialogBox_toolText4"  value="<?php echo $D['popDialogBox_toolText4']; ?>" onmouseover="mouseoverInputEle(this);" onmouseout="mouseoutInputEle(this);" onchange="updateEntity(this);">
+                <span class="help-block" id="popDialogBox_toolText4_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group" style="border-bottom-style: solid;border-bottom-color: #f1b828;border-bottom-width: 2px;">
+              <label class="col-sm-2 col-sm-2 control-label">工具栏4-链接</label>
+              <div class="col-sm-10">
+                <span class="" id="tips">如需区分电脑/手机访问链接，请电脑版链接在前，手机版链接在后，并以英文分号(;)分割。</span>
+                <input type="text" class="form-control" placeholder="http://" name="popDialogBox_toolUrl4"  value="<?php echo $D['popDialogBox_toolUrl4']; ?>" onmouseover="mouseoverInputEle(this);" onmouseout="mouseoutInputEle(this);" onchange="updateEntity(this);">
+                <span class="help-block" id="popDialogBox_toolUrl4_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">工具栏5-图片 <i class="fa fa-question-circle" title="建议尺寸为40*40像素"></i></label>
+              <div class="col-sm-10">
+                <span class="" id="tips">建议尺寸为40*40像素，保存为png或者jpg格式,大小不超过2MB，若未选择将使用默认或已有图标</span>
+                <input type="file" class="form-control" placeholder="工具栏5-图片" onchange="fileInputChk(this); updateEntity(this);" name="popDialogBox_toolImg5" accept="image/jpg,image/jpeg,image/png" onmouseover="mouseoverInputEle(this);" onmouseout="mouseoutInputEle(this);">
+                <span class="help-block" id="popDialogBox_toolImg5_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">工具栏5-文字</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="工具栏5-文字" name="popDialogBox_toolText5"  value="<?php echo $D['popDialogBox_toolText5']; ?>" onmouseover="mouseoverInputEle(this);" onmouseout="mouseoutInputEle(this);" onchange="updateEntity(this);">
+                <span class="help-block" id="popDialogBox_toolText5_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group" style="border-bottom-style: solid;border-bottom-color: #f1b828;border-bottom-width: 2px;">
+              <label class="col-sm-2 col-sm-2 control-label">工具栏5-链接</label>
+              <div class="col-sm-10">
+                <span class="" id="tips">如需区分电脑/手机访问链接，请电脑版链接在前，手机版链接在后，并以英文分号(;)分割。</span>
+                <input type="text" class="form-control" placeholder="http://" name="popDialogBox_toolUrl5"  value="<?php echo $D['popDialogBox_toolUrl5']; ?>" onmouseover="mouseoverInputEle(this);" onmouseout="mouseoutInputEle(this);" onchange="updateEntity(this);">
+                <span class="help-block" id="popDialogBox_toolUrl5_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">工具栏6-图片 <i class="fa fa-question-circle" title="建议尺寸为40*40像素"></i></label>
+              <div class="col-sm-10">
+                <span class="" id="tips">建议尺寸为40*40像素，保存为png或者jpg格式,大小不超过2MB，若未选择将使用默认或已有图标</span>
+                <input type="file" class="form-control" placeholder="工具栏6-图片" onchange="fileInputChk(this); updateEntity(this);" name="popDialogBox_toolImg6" accept="image/jpg,image/jpeg,image/png" onmouseover="mouseoverInputEle(this);" onmouseout="mouseoutInputEle(this);">
+                <span class="help-block" id="popDialogBox_toolImg6_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">工具栏6-文字</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="工具栏6-文字" name="popDialogBox_toolText6"  value="<?php echo $D['popDialogBox_toolText6']; ?>" onmouseover="mouseoverInputEle(this);" onmouseout="mouseoutInputEle(this);" onchange="updateEntity(this);">
+                <span class="help-block" id="popDialogBox_toolText6_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group" style="border-bottom-style: solid;border-bottom-color: #f1b828;border-bottom-width: 2px;">
+              <label class="col-sm-2 col-sm-2 control-label">工具栏6-链接</label>
+              <div class="col-sm-10">
+                <span class="" id="tips">如需区分电脑/手机访问链接，请电脑版链接在前，手机版链接在后，并以英文分号(;)分割。</span>
+                <input type="text" class="form-control" placeholder="http://" name="popDialogBox_toolUrl6"  value="<?php echo $D['popDialogBox_toolUrl6']; ?>" onmouseover="mouseoverInputEle(this);" onmouseout="mouseoutInputEle(this);" onchange="updateEntity(this);">
+                <span class="help-block" id="popDialogBox_toolUrl6_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">工具栏7-图片 <i class="fa fa-question-circle" title="建议尺寸为40*40像素"></i></label>
+              <div class="col-sm-10">
+                <span class="" id="tips">建议尺寸为40*40像素，保存为png或者jpg格式,大小不超过2MB，若未选择将使用默认或已有图标</span>
+                <input type="file" class="form-control" placeholder="工具栏7-图片" onchange="fileInputChk(this); updateEntity(this);" name="popDialogBox_toolImg7" accept="image/jpg,image/jpeg,image/png" onmouseover="mouseoverInputEle(this);" onmouseout="mouseoutInputEle(this);">
+                <span class="help-block" id="popDialogBox_toolImg7_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">工具栏7-文字</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="工具栏7-文字" name="popDialogBox_toolText7"  value="<?php echo $D['popDialogBox_toolText7']; ?>" onmouseover="mouseoverInputEle(this);" onmouseout="mouseoutInputEle(this);" onchange="updateEntity(this);">
+                <span class="help-block" id="popDialogBox_toolText7_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group" style="border-bottom-style: solid;border-bottom-color: #f1b828;border-bottom-width: 2px;">
+              <label class="col-sm-2 col-sm-2 control-label">工具栏7-链接</label>
+              <div class="col-sm-10">
+                <span class="" id="tips">如需区分电脑/手机访问链接，请电脑版链接在前，手机版链接在后，并以英文分号(;)分割。</span>
+                <input type="text" class="form-control" placeholder="http://" name="popDialogBox_toolUrl7"  value="<?php echo $D['popDialogBox_toolUrl7']; ?>" onmouseover="mouseoverInputEle(this);" onmouseout="mouseoutInputEle(this);" onchange="updateEntity(this);">
+                <span class="help-block" id="popDialogBox_toolUrl7_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">工具栏8-图片 <i class="fa fa-question-circle" title="建议尺寸为40*40像素"></i></label>
+              <div class="col-sm-10">
+                <span class="" id="tips">建议尺寸为40*40像素，保存为png或者jpg格式,大小不超过2MB，若未选择将使用默认或已有图标</span>
+                <input type="file" class="form-control" placeholder="工具栏8-图片" onchange="fileInputChk(this); updateEntity(this);" name="popDialogBox_toolImg8" accept="image/jpg,image/jpeg,image/png" onmouseover="mouseoverInputEle(this);" onmouseout="mouseoutInputEle(this);">
+                <span class="help-block" id="popDialogBox_toolImg8_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">工具栏8-文字</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="工具栏8-文字" name="popDialogBox_toolText8"  value="<?php echo $D['popDialogBox_toolText8']; ?>" onmouseover="mouseoverInputEle(this);" onmouseout="mouseoutInputEle(this);" onchange="updateEntity(this);">
+                <span class="help-block" id="popDialogBox_toolText8_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group" style="border-bottom-style: solid;border-bottom-color: #f1b828;border-bottom-width: 2px;">
+              <label class="col-sm-2 col-sm-2 control-label">工具栏8-链接</label>
+              <div class="col-sm-10">
+                <span class="" id="tips">如需区分电脑/手机访问链接，请电脑版链接在前，手机版链接在后，并以英文分号(;)分割。</span>
+                <input type="text" class="form-control" placeholder="http://" name="popDialogBox_toolUrl8"  value="<?php echo $D['popDialogBox_toolUrl8']; ?>" onmouseover="mouseoverInputEle(this);" onmouseout="mouseoutInputEle(this);" onchange="updateEntity(this);">
+                <span class="help-block" id="popDialogBox_toolUrl8_tips"></span>
+              </div>
+            </div>
+
+
+
+            <div class="form-group">
+              <button type="button" class="btn btn-theme02 pull-right" onclick="submitToAudit(<?php echo $_GET['type_id'].','.$_GET['entity_id']; ?>);">提交审核</button>
+              <a href="/view/engine/entityTable.php?type_id=<?php echo $_GET['type_id']?>"><button type="button" class="btn btn-theme03 pull-right">保存并返回</button></a>
+              <a href="/view/engine/addEntity.php?step=1&<?php echo 'type_id='.$_GET['type_id'].'&entity_id='.$_GET['entity_id']; ?>"><button type="button" class="btn btn-theme pull-right" >上一步</button></a>
+              <button type="button" class="btn btn-theme01 pull-right" onclick="deleteEntity(<?php echo $_GET['type_id'].','.$_GET['entity_id']; ?>)">放弃</button>
+              <span id="oprtTip"></span>
+            </div>
+
+          </form>
+
+        </div>
+      </div><!-- col-lg-12-->
+
+
+    </div>
+
+  </section>
+</section>
+<!--main content end-->
+
+
+<?php
+  include 'previewPopBox.lzW';
+?>
+
+
+
+<?php
+  include 'footer.lzW';
+?>

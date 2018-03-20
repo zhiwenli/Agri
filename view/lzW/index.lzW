@@ -1,0 +1,140 @@
+<?php 
+  include 'header.lzW';
+  include 'sidebar.lzW';
+?>
+
+
+
+<!-- **********************************************************************************************************************************************************
+MAIN CONTENT
+*********************************************************************************************************************************************************** -->
+<!--main content start-->
+<section id="main-content">
+  <section class="wrapper site-min-height">
+    <h3><i class="fa fa-angle-right"></i>首页：数据管理</h3>
+    <div class="row mt">
+      <div class="col-lg-12">
+        <p>请点击下面的版块进行相应的操作</p>
+      </div>
+    </div>
+
+    <!-- panel行 -->
+    <div class="row">
+
+      <?php if($role == ADMIN){ ?>
+      <a target="_blank" href="checkEntity.php?tableName=speciality">
+        <div class="col-lg-4 col-md-4 col-sm-4 mb">
+          <div class="twitter-panel pn">
+            <p class="fa fa-4x" style="margin-top: 40px;"><?php echo $specialityStatusWatting; ?></p>
+            <p class="user">宇宝/庄园/农场/基地</p>
+            <p>您有<?php echo $specialityStatusWatting; ?>条精品数据待审核<?php if($specialityStatusWatting > 0){echo("，请前往处理");}?></p>
+            <button class="btn btn-small btn-theme04">前往审核</button>
+          </div>
+        </div><!-- /col-md-4 -->
+      </a>
+
+      <a target="_blank" href="checkEntity.php?tableName=station">
+        <div class="col-lg-4 col-md-4 col-sm-4 mb">
+          <div class="twitter-panel pn">
+            <p class="fa fa-4x" style="margin-top: 40px;"><?php echo $stationStatusWatting; ?></p>
+            <p class="user">网点/爱心/单位/个人</p>
+            <p>您有<?php echo $stationStatusWatting; ?>条站点数据待审核<?php if($stationStatusWatting > 0){echo("，请前往处理");}?></p>
+            <button class="btn btn-small btn-theme04">前往审核</button>
+          </div>
+        </div><!-- /col-md-4 -->
+      </a>
+
+      <a target="_blank" href="checkEntity.php?tableName=satellite">
+        <div class="col-lg-4 col-md-4 col-sm-4 mb">
+          <div class="twitter-panel pn">
+            <p class="fa fa-4x" style="margin-top: 40px;"><?php echo $satelliteStatusWatting; ?></p>
+            <p class="user">VSAT</p>
+            <p>您有<?php echo $satelliteStatusWatting; ?>条VSAT数据待审核<?php if($satelliteStatusWatting > 0){echo("，请前往处理");}?></p>
+            <button class="btn btn-small btn-theme04">前往审核</button>
+          </div>
+        </div><!-- /col-md-4 -->
+      </a>
+      <?php } ?>
+      
+      <a target="_blank" href="addEntity.php?tableName=speciality">
+        <div class="col-lg-4 col-md-4 col-sm-4 mb">
+          <div class="product-panel-2 pn">
+            <!-- <div class="badge badge-hot">HOT</div> -->
+            <img src="/public/img/6sdfmu56.png" width="200" height="120" alt="">
+            <h5 class="mt">宇宝/庄园/农场/基地</h5>
+            <h6>&nbsp;</h6>
+            <button class="btn btn-small btn-theme04">添加精品</button>
+          </div>
+        </div><!--/col-md-4 -->
+      </a>
+
+      <a target="_blank" href="addEntity.php?tableName=station">
+        <div class="col-lg-4 col-md-4 col-sm-4 mb">
+          <div class="product-panel-2 pn">
+            <!-- <div class="badge badge-hot">HOT</div> -->
+            <img src="/public/img/awsef20juy.png" width="200" height="120" alt="">
+            <h5 class="mt">网点/爱心/单位/个人</h5>
+            <h6>&nbsp;</h6>
+            <button class="btn btn-small btn-theme04">添加站点</button>
+          </div>
+        </div><!--/col-md-4 -->
+      </a>
+
+      <a target="_blank" href="addEntity.php?tableName=satellite">
+        <div class="col-lg-4 col-md-4 col-sm-4 mb">
+          <div class="product-panel-2 pn">
+            <!-- <div class="badge badge-hot">HOT</div> -->
+            <img src="/public/img/239974201559518.png" width="200" height="120" alt="">
+            <h5 class="mt">VSAT</h5>
+            <h6>&nbsp;</h6>
+            <button class="btn btn-small btn-theme04">添加基站</button>
+          </div>
+        </div><!--/col-md-4 -->
+      </a>
+
+      <!-- 统计图表 -->
+      <?php if($role == ADMIN && false){ ?>
+      <div class="col-lg-4 col-md-4 col-sm-4 mb">
+        <div class="content-panel" style="padding: 0px;">
+           <h4><i class="fa fa-angle-right"></i>数量品类</h4>
+          <div class="panel-body text-center">
+            <canvas id="doughnut1" ></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-4 col-sm-4 mb">
+        <div class="content-panel">
+          <h4><i class="fa fa-angle-right"></i>待审数据品类</h4>
+          <div class="panel-body text-center">
+            <canvas id="doughnut2"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-4 col-sm-4 mb">
+        <div class="content-panel">
+          <h4><i class="fa fa-angle-right"></i> G</h4>
+          <div class="panel-body text-center">
+            <canvas id="doughnut"></canvas>
+          </div>
+        </div>
+      </div>
+      <?php } ?>
+
+    </div><!-- end of panel行 -->
+
+  </section><!--/wrapper -->
+</section><!-- /MAIN CONTENT -->
+<!--main content end-->
+
+
+
+<?php
+  include 'footer.lzW';
+?>
+
+
+<script type="text/javascript">
+  // loadCharts();
+</script>

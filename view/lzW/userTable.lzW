@@ -1,0 +1,82 @@
+<?php 
+  include 'header.lzW';
+  include 'sidebar.lzW';
+?>
+
+
+
+<!-- **********************************************************************************************************************************************************
+MAIN CONTENT
+*********************************************************************************************************************************************************** -->
+<!--main content start-->
+<section id="main-content">
+  <section class="wrapper site-min-height">
+    <div class="row mt">
+      <div class="col-md-12" id="entityTable">
+        <div class="content-panel">
+
+          <table class="table table-striped table-advance table-hover">
+          <h4><i class="fa fa-angle-right"></i>
+            用户列表
+          </h4>
+           <!--<p style="color: blue;text-align: left; margin: 0px;">提示：点击“名称”可在新窗口预览显示效果；点击”编辑/删除”图标可修改或删除数据记录<?php if($role == ADMIN){ echo '；点击“审核”图标可查看并审核产品信息。';}else{echo('。');} ?></p> -->
+            <hr>
+            <thead>
+              <tr>
+                <th><i class="fa fa-bookmark"></i> ID</th>
+                <th><i class="fa fa-bookmark"></i> 姓名</th>
+                <th><i class="fa fa-bookmark"></i> 单位</th>
+                <th><i class="fa fa-bullhorn"></i> 邮箱</th>
+                <th><i class="fa fa-bullhorn"></i> 电话</th>
+                <th class="hidden-phone"><i class="fa fa-question-circle"></i> 角色</th>
+                <th><i class=" fa fa-edit"></i> 最近登录时间</th>
+                <th><i class=" fa fa-edit"></i> 编辑/删除</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <?php for ($i=0; $i < count($D); $i++) { ?>
+              <tr>
+                <td><?php echo $D[$i]["user_id"]; ?></td>
+                <td><?php echo $D[$i]["name"]; ?></td>
+                <td><?php echo $D[$i]["dept"]; ?></td>
+                <td><?php echo $D[$i]["email"]; ?></td>
+                <td class="hidden-phone"><?php echo $D[$i]["tel"]; ?></td>
+                <td><?php echo $D[$i]["role"]; ?></td>
+                <td><?php echo $D[$i]["last_login"]; ?></td>
+                <td>
+                  <button class="btn btn-primary btn-xs" title="修改" onclick="modifyUser(<?php echo $D[$i]['user_id']; ?> );"><i class="fa fa-pencil"></i></button>
+                  <button class="btn btn-danger btn-xs" title="删除" onclick="deleteUser(<?php echo $D[$i]['user_id']; ?> );"><i class="fa fa-trash-o "></i></button>
+                </td>
+              </tr>
+              <?php } ?>
+            </tbody>
+
+          </table>
+
+          <!-- 页面切换 -->
+          <div style="text-align:center;">
+            <!-- <span class="badge">5</span> -->
+            <a href="<?php $url=$_SERVER['QUERY_STRING']; echo $_SERVER['PHP_SELF'].'?'.FP::url_set_value($_SERVER['QUERY_STRING'], 'page', 1); ?>"><span class="badge bg-primary">首页</span></a>
+            <a href="<?php $url=$_SERVER['QUERY_STRING']; echo $_SERVER['PHP_SELF'].'?'.FP::url_set_value($_SERVER['QUERY_STRING'], 'page', $page['index']-1); ?>"><span class="badge bg-success">上一页</span></a>
+            <span class="badge bg-info"><?php echo $page['index'].'/'.$page['sum'] ?></span>
+            <a href="<?php $url=$_SERVER['QUERY_STRING']; echo $_SERVER['PHP_SELF'].'?'.FP::url_set_value($_SERVER['QUERY_STRING'], 'page', $page['index']+1); ?>"><span class="badge bg-success">下一页</span></a>
+            <a href="<?php $url=$_SERVER['QUERY_STRING']; echo $_SERVER['PHP_SELF'].'?'.FP::url_set_value($_SERVER['QUERY_STRING'], 'page', $page['sum']); ?>"><span class="badge bg-primary">尾页</span></div></a>
+            <!-- <span class="badge bg-important">5</span> -->
+          </div>
+
+          <?php if(count($D) <= 0){ ?>
+              <div class="alert alert-warning">无数据！</div>
+          <?php } ?>
+        </div><!-- /content-panel -->
+      </div><!-- /col-md-12 -->
+    </div><!-- /row -->
+  </section><!--/wrapper -->
+</section><!-- /MAIN CONTENT -->
+<!--main content end-->
+
+
+
+<?php
+  include 'footer.lzW';
+?>

@@ -1,0 +1,98 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="/public/stylesheets/externalCSS/bootstrap.css" />
+<script src="/public/javascripts/externalJS/jquery-2.1.4.min.js"></script>
+  <script src="/public/javascripts/ms/ajaxHTTP.js" type="text/javascript"></script>
+<body style="margin: 0px;">
+
+<?php include 'cesiumPreview.lzW'; ?>
+<?php include 'previewPopBoxForFullScreen.lzW'; ?>
+
+<p id="name" style="display: none;"><?php echo $D['name']; ?></p>
+<p id="lat" style="display: none;"><?php echo $D['lat']; ?></p>
+<p id="lng" style="display: none;"><?php echo $D['lng']; ?></p>
+<p id="icon" style="display: none;"><?php echo is_null($D['icon']) ? PUBLIC_IMG_PATH.FP::getDefaultTypeIcon((int)$D['type_id']) : PUBLIC_USER_IMG_PATH.$D['icon']; ?></p>
+<p id="sourceId" style="display: none;"><?php echo $tableName.'_'.$D['entity_id']; ?></p>
+<p id="type_id" style="display: none;"><?php echo $D['type_id']; ?></p>
+<p id="entity_id" style="display: none;"><?php echo $D['entity_id']; ?></p>
+
+<?php if($role == ADMIN){ ?>
+<button type="button" class="btn" style="z-index: 2; position: absolute; top: 20px; left: 20px;" onclick="pass()">通过并发布</button>
+<button type="button" class="btn" style="z-index: 2; position: absolute; top: 70px; left: 20px;" onclick="edit()">编辑修改</button>
+<button type="button" class="btn" style="z-index: 2; position: absolute; top: 120px; left: 20px;" onclick="refuse()">拒绝通过并退回</button>
+<?php } ?>
+
+</body>
+
+
+
+<script type="text/javascript">
+  document.getElementById('cesiumContainer').style.height = "100%";
+
+  var name = document.getElementById('name').innerText;
+  var lat = document.getElementById('lat').innerText;
+  var lng = document.getElementById('lng').innerText;
+  var icon = document.getElementById('icon').innerText;
+  var sourceId = document.getElementById('sourceId').innerText;
+
+  entityPreview(name, lat, lng, icon, sourceId);
+
+    //点击事件监听
+  var handler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas);
+  handler.setInputAction(function(click) {
+    var pickedObject = viewer.scene.pick(click.position);
+    if (Cesium.defined(pickedObject)) {
+      // pop dialog here
+      console.log("click entity ", pickedObject.id.id);
+      showPopDialogBox(pickedObject.id.id);
+    }else{
+      hidePopDialogBox();
+    }
+  }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
+
+  function pass(){
+    if (!confirm("确认审核通过？")) {
+      return false;
+    }
+    var form = new FormData();
+    form.append("requestOpt", "_update");
+    form.append("type_id", document.getElementById('type_id').innerText);
+    form.append("entity_id", document.getElementById('entity_id').innerText);
+
+    //上线
+    form.append("status", 20);
+    sendPostFormObj(form, '/controll/ControllTest.php', function(data){
+      if(data.status.success){
+        var type_id = document.getElementById('type_id').innerText;
+        window.location.href = "/view/engine/entityTable.php?type_id="+type_id;
+      }
+    });
+  }
+
+  function edit(){
+    var type_id = document.getElementById('type_id').innerText;
+    var entity_id = document.getElementById('entity_id').innerText;
+    var url = "/view/engine/addEntity.php?type_id="+type_id+"&entity_id="+entity_id;
+    window.location.href=url;
+  }
+
+  function refuse(){
+    if (!confirm("确认拒绝审核通过并退回？")) {
+      return false;
+    }
+    var form = new FormData();
+    form.append("requestOpt", "_update");
+    form.append("type_id", document.getElementById('type_id').innerText);
+    form.append("entity_id", document.getElementById('entity_id').innerText);
+
+    //上线
+    form.append("status", 0);
+    sendPostFormObj(form, '/controll/ControllTest.php', function(data){
+      if(data.status.success){
+        var type_id = document.getElementById('type_id').innerText;
+        window.location.href = "/view/engine/entityTable.php?type_id="+type_id;
+      }
+    });
+  }
+
+</script>
+

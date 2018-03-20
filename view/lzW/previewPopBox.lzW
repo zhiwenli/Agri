@@ -1,0 +1,385 @@
+
+<style>
+    /*popDialogBox*/
+.popDialogBox{
+  position: absolute;
+  z-index:2;
+  right: -75%;
+  top: 160px;
+  opacity: 0;
+  width: 73%;
+  max-width: 300px; /*控制横屏时避免太宽*/
+  max-height: 70%;
+  margin: 2px 0px;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  border-style: ridge;
+  border-width: 2px;
+  border-color: gray;
+  border-radius: 15px;
+  background: rgba(40, 40, 40, 0.6);
+}
+
+.popDialogBox_head{
+  overflow:hidden;
+  height: 30px;
+  padding: 2px 2px 2px 2px;
+/*  border-style: solid;
+  border-color: red;*/
+}
+
+.popDialogBox_title{
+  line-height: 20px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: rgba(250, 250, 250, 0.8);
+
+}
+
+.popDialogBox_gov{
+  overflow:hidden;
+  height: 60px; /*js动态控制确保图片比例不变*/
+  padding: 1px 0px 1px 0px;
+}
+
+.popDialogBox_govImage{
+  width: 100%;
+  height: 100%;
+}
+
+.preview_popDialogBox_descBg{
+  position: relative; /*将其设置为relative,子元素才可相对其absolute*/
+  overflow:hidden;
+  height: 200px; /*js动态控制确保图片比例不变*/
+  padding: 1px 0px 1px 0px;
+  background-image: url(''); /*js订制*/
+
+  /*背景图片自适应*/
+  filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+  -moz-background-size:100% 100%;  
+  background-size:100% 100%;
+
+  text-align:center;
+}
+
+.popDialogBox_descripUrl{
+  text-decoration: none;
+}
+
+#preview_popDialogBox_descText1{
+  position: absolute;
+  top: 20px;
+  margin-top: 0px; 
+  margin-bottom: 0px;
+  color: rgb(250, 250, 250);
+  font-size: 27px;
+  font-weight: bold;
+  text-align: center;
+
+  font-family:"黑体";
+
+  letter-spacing:1px;
+}
+
+#preview_popDialogBox_descIconText2{
+  position: absolute;
+  top: 70px;
+  height: 50px;
+}
+
+#preview_popDialogBox_descIcon{
+  float: left;  
+  height: 50px;
+  width: 50px;
+  margin: 0px auto;
+}
+
+
+#preview_popDialogBox_descText2{
+  float: left;
+  color: rgb(250,250,250);
+  font-size: 23px;
+  font-weight: bold;
+  text-align: center;
+  font-family:"黑体";
+  margin: 15px 12px 15px 2px;
+}
+
+#preview_popDialogBox_2dBarcode{
+  position: absolute;
+  left: 1px;
+  bottom: 0px;
+  width: 50px;
+  height: 50px;
+}
+
+#preview_popDialogBox_barcode{
+  position: absolute;
+  bottom: 1px;
+  left: 50%;
+  margin-left: -41px;
+
+  width: 92px;
+  height: 38px;
+}
+
+#preview_popDialogBox_logo{
+  position: absolute;
+  right: 1px;
+  bottom: 0px;
+  width: 50px;
+  height: 50px;
+}
+
+.preview_popDialogBox_tools{
+  overflow:hidden;
+  padding: 5px 0px; /*上下左右*/
+
+  /*背景图片自适应，背景图片在结束中添加*/
+  filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+  -moz-background-size:100% 100%;  
+  background-size:100% 100%;
+}
+
+.popDialogBox_tool{
+  float: left;
+  overflow: hidden;
+  /*width: 22%;*/ /*使用JS控制*/
+  margin: 5px 0px;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 2px;
+  padding-bottom: 4px; /*覆盖下边距值，但不改变js需要获取的padding值*/
+  border-style: dashed;
+  border-radius: 4px;
+  border-width: 2px;
+  border-color: rgba(196, 133, 12, 0.8);
+  background: rgba(190, 250, 250, 0.5);
+
+  text-align: center; /*内部文字据中*/
+}
+
+.popDialogBox_toolImage{
+  text-align: center;
+  width: 100%;
+  height: 70%;
+}
+
+.popDialogBox_toolUrl{
+  text-decoration: none;
+}
+
+.popDialogBox_toolText{
+  cursor: pointer;
+  font-weight:bold;
+  font-size: 13px;
+  color: black;
+  margin: 1px;
+}
+
+.popDialogBox_toolGap{
+  float: left;
+  width: 7px;
+  height: 5px;
+}
+
+.popDialogBox_close {
+  position: absolute;
+  width: 20px;
+  right: 3px;
+  top: 6px;
+  filter: invert(100%); /*颜色翻转*/
+  opacity: 0.7;
+  
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+  -moz-box-shadow: 1px 1px 3px #000;
+  -webkit-box-shadow: 1px 1px 3px #000;
+  box-shadow: 1px 1px 3px #000;
+}
+
+.popDialogBox_close:hover { opacity: 1; }
+ </style>
+
+<div id="popDialogBox" class="popDialogBox">
+  <img title="Close" class="popDialogBox_close" onclick="hidePopDialogBox();" src="/public/img/close.png"/>
+  
+  <div class="popDialogBox_mian">
+
+    <div class="popDialogBox_head">
+      <p id="preview_popDialogBox_title" class="popDialogBox_title">北斗农业·中国</p>
+    </div>
+
+    
+    <div class="popDialogBox_gov">
+      <a id="preview_popDialogBox_govUrl" href="" target='_blank'>
+        <img id="preview_popDialogBox_govImg" src="" class="popDialogBox_govImage" />
+      </a>
+    </div>
+
+    <a id="preview_popDialogBox_descUrl" name="preview_popDialogBox_descUrl" href="" target='_blank'>
+      <div class="preview_popDialogBox_descBg" id="preview_popDialogBox_descBg">
+        
+          <p id="preview_popDialogBox_descText1">主标题</p>
+
+          <div id="preview_popDialogBox_descIconText2">
+            <img id="preview_popDialogBox_descIcon" src="" />
+            <p id="preview_popDialogBox_descText2">产品名称</p>
+          </div>
+
+          <img id="preview_popDialogBox_2dBarcode" src="" />
+          <img id="preview_popDialogBox_barcode" src="" />
+          <img id="preview_popDialogBox_logo" src="" />
+      </div>
+    </a>
+
+    <div class="preview_popDialogBox_tools">
+
+      <?php
+        for ($i=1; $i <= 8; $i++) {
+          $tool = "<div class='popDialogBox_tool'>
+          <a id='preview_popDialogBox_toolUrl".$i."' class='popDialogBox_toolUrl' href='' target='_blank'><img id='preview_popDialogBox_toolImg".$i."' class='popDialogBox_toolImage' src='' />
+            <p id='preview_popDialogBox_toolText".$i."' class='popDialogBox_toolText'>工具栏".$i."</p>
+          </a>
+          </div>";
+
+          if (($i%4) !== 0) {
+            $tool = $tool."<div class='popDialogBox_toolGap'></div>";
+          }
+          echo $tool;
+        }
+      ?>
+
+    </div>
+  </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+window.onload = function(){
+  setPopDialogCSS();
+
+  var entity_id = $("input[name=entity_id]").val();
+  var type_id = $("input[name=type_id]").val();
+  
+  showPopDialogBox("<?php echo FP::getTableName($_GET['type_id']).'_'.$_GET['entity_id']?>");
+}
+
+
+window.onresize = function(){
+  setPopDialogCSS();
+};
+
+//窗口悬浮
+window.onscroll = function () {
+  var top = document.documentElement.scrollTop || document.body.scrollTop;
+  $("#popDialogBox").css("top", (160 + top) + "px");
+};
+
+
+//显示弹出信息框
+function showPopDialogBox(dataSourceId){
+
+  setDialogBoxMsg(dataSourceId);
+  $('#popDialogBox').show();
+  $('#popDialogBox').animate({right:"100px" ,opacity: "1"}, "normal");
+
+  return;
+}
+
+//隐藏弹出信息框
+function hidePopDialogBox(){
+  $('#popDialogBox').hide();
+  // $('#popDialogBox').animate({ right:"-75%" ,opacity: "0"}, "fast");
+}
+
+//通过id向服务器请求对应实体数据并将其写入至popDialogBox中
+function setDialogBoxMsg(dataSourceId){
+  $('document').ready(function(){
+    $.ajax({
+      type: 'GET',
+      url: '/controll/getPopDialogBoxMsg.php?dataSourceId=' + dataSourceId,
+      //data: ,
+      dataType: 'json',
+      success: function(data){
+        if(data.status.success){
+          //设置实体对应的弹窗内容
+          $('#preview_popDialogBox_title').html(data.headerText);
+
+          $('#preview_popDialogBox_govImg').attr("src", data.govImg);
+          $('#preview_popDialogBox_govUrl').attr("href", data.govUrl);
+          $('.preview_popDialogBox_descBg').css("background-image", "url('"+data.descripBg+"')");
+          $('#preview_popDialogBox_descUrl').attr("href",data.descripUrl);
+          $('#preview_popDialogBox_descText1').html(data.descripText1);
+          $('#preview_popDialogBox_descText2').html(data.descripText2);setDescripText2(data.descripText2);
+          $('#preview_popDialogBox_descIcon').attr("src",data.descripIcon);
+          $('#preview_popDialogBox_2dBarcode').attr("src",data.descrip2dBarcode);
+          $('#preview_popDialogBox_barcode').attr("src",data.descripBarcode);
+          $('#preview_popDialogBox_logo').attr("src",data.descripLogo);
+
+          $('.preview_popDialogBox_tools').css('background-image', "url('"+data.toolsBg+"')");
+
+          $.each(data.tools, function(index, value) {
+            $('#preview_popDialogBox_toolImg' + index).attr('src', value.img);
+            $('#preview_popDialogBox_toolText' + index).text(value.text);
+            $('#preview_popDialogBox_toolUrl' + index).attr('href', value.url);
+          });
+
+          setPopDialogCSS();
+
+        }else{
+          console.error('服务器返回数据错误', data.status.msg);
+        }
+      },
+      error: function(XMLHttpRequest){
+        console.error('服务器连接异常：' + XMLHttpRequest.status);
+      }
+    });
+  });
+}
+
+//根据文字数量缩小文字字体
+function setDescripText2(descripText2){
+  var l = dataLength(descripText2);
+  if(l <= 16){
+    $('#preview_popDialogBox_descText2').css('font-size', '23px');
+  }else if (l > 16 && l <=26) {
+    $('#preview_popDialogBox_descText2').css('font-size', '16px');
+  }else if(l > 26){
+    $('#preview_popDialogBox_descText2').css('font-size', '12px');
+  }
+}
+
+//根据页面情况设定排版细节，需在屏幕加载及改变时调用
+function setPopDialogCSS(){
+  console.info("reset CSS");
+
+  //控制govImg、descImg图片比例
+  var popDialogBoxWidth = $('.popDialogBox').width();
+  $('.popDialogBox_gov').height(popDialogBoxWidth/5);
+  $('.popDialogBox_descrip').height(popDialogBoxWidth*2/3);
+
+  var popDialogBox_descText1_width = $('#preview_popDialogBox_descText1').width();
+  $('#preview_popDialogBox_descText1').css("left", (popDialogBoxWidth - popDialogBox_descText1_width) / 2);
+
+  var popDialogBox_descIconText2_width = $('#preview_popDialogBox_descIconText2').width();
+  $('#preview_popDialogBox_descIconText2').css("left", (popDialogBoxWidth - popDialogBox_descIconText2_width) / 2);
+
+  //设置popDialogBox_tool排列
+  var width = $(".preview_popDialogBox_tools").width() - 1 + 25; //不知道为什么加30刚好
+  var wid = $(".popDialogBox_toolGap").width() * 3;
+  var borderWidth = parseInt($(".popDialogBox_tool").css("border-left-width"));
+  var toolPadding = parseInt($(".popDialogBox_tool").css("padding-left"));
+
+  //设置popDialogBox_tool的宽度，且高度跟随宽度
+  var popDialogBox_toolWidth = (width-wid)/4 - (borderWidth+toolPadding)*2;
+  $(".popDialogBox_tool").css("width", popDialogBox_toolWidth);
+  $(".popDialogBox_tool").css("height", popDialogBox_toolWidth);
+  
+}
+</script>

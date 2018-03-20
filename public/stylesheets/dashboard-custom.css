@@ -1,0 +1,37 @@
+.modal-dialog{
+	margin-top: 200px;
+}
+
+.register-dialog{
+  margin-top: 130px;
+}
+
+.error-tips{
+  color: #f66a8e;
+  font-size: small;
+}
+
+.login-register-tips{
+  text-align: center;
+  color: red;
+}
+
+.pull-right{
+  margin-right: 40px;
+}
+
+.dropdown-menu.extended {
+  top: 55px;
+  max-width: 300px !important;
+  min-width: 60px !important;
+  width: 100px !important;
+}
+
+.help-block{
+  display: none;
+  color: red;
+}
+
+.form-panel{
+  overflow: hidden;
+}

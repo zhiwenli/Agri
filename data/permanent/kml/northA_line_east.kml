@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>northA_line_east.kml</name>
+	<Schema name="D:/Cesium1.12/Apps/br/kml/northA_line_east.kml" id="schema">
+		<gx:SimpleArrayField kml:type="int" kml:name="power"><displayName>Power (W)</displayName>
+</gx:SimpleArrayField>
+		<gx:SimpleArrayField kml:type="int" kml:name="cadence"><displayName>Cadence (rpm)</displayName>
+</gx:SimpleArrayField>
+		<gx:SimpleArrayField kml:type="int" kml:name="heart_rate"><displayName>Heart rate (bpm)</displayName>
+</gx:SimpleArrayField>
+	</Schema>
+	<StyleMap id="track">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#track0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#track1</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="track0">
+		<IconStyle>
+			<scale>3.5</scale>
+			<Icon>
+				<href>../img/trackflag.png</href>
+			</Icon>
+		</IconStyle>
+		<LineStyle>
+			<color>ff00ff00</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="track1">
+		<IconStyle>
+			<scale>3.5</scale>
+			<Icon>
+				<href>../img/trackflag.png</href>
+			</Icon>
+		</IconStyle>
+		<LineStyle>
+			<color>ff00ff00</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Placemark id="Tour_east">
+		<name>North lineA</name>
+		 
+		<styleUrl>#track</styleUrl>
+		 
+		 
+		<gx:MultiTrack>
+			<altitudeMode>absolute</altitudeMode>
+			<gx:Track>
+				<when>2013-07-25T19:34:05Z</when>
+				<when>2013-07-25T19:34:06Z</when>
+				<when>2013-07-25T19:34:07Z</when>
+				<when>2013-07-25T19:34:08Z</when>
+				<when>2013-07-25T19:34:09Z</when>
+				<when>2013-07-25T19:34:10Z</when>
+				<when>2013-07-25T19:34:11Z</when>
+				<when>2013-07-25T19:34:12Z</when>
+				<when>2013-07-25T19:34:13Z</when>
+				<when>2013-07-25T19:34:14Z</when>
+				<when>2013-07-25T19:34:15Z</when>
+				<when>2013-07-25T19:34:16Z</when>
+				<when>2013-07-25T19:34:17Z</when>
+				<when>2013-07-25T19:34:18Z</when>
+				<when>2013-07-25T19:34:19Z</when>
+				<when>2013-07-25T19:34:20Z</when>
+				<when>2013-07-25T19:34:21Z</when>
+				<when>2013-07-25T19:34:22Z</when>
+				<when>2013-07-25T19:34:23Z</when>
+				<when>2013-07-25T19:34:24Z</when>
+				<when>2013-07-25T19:34:25Z</when>
+				<when>2013-07-25T19:34:26Z</when>
+				<when>2013-07-25T19:34:27Z</when>
+				<when>2013-07-25T19:34:28Z</when>
+				<when>2013-07-25T19:34:29Z</when>
+				<when>2013-07-25T19:34:30Z</when>
+				<when>2013-07-25T19:34:31Z</when>
+				<when>2013-07-25T19:34:32Z</when>
+				<when>2013-07-25T19:34:33Z</when>
+				<when>2013-07-25T19:34:34Z</when>
+				<when>2013-07-25T19:34:35Z</when>
+				<when>2013-07-25T19:34:21Z</when>
+				<when>2013-07-25T19:34:22Z</when>
+				<when>2013-07-25T19:34:23Z</when>
+				<when>2013-07-25T19:34:24Z</when>
+				<when>2013-07-25T19:34:25Z</when>
+				<when>2013-07-25T19:34:26Z</when>
+				<when>2013-07-25T19:34:27Z</when>
+				<when>2013-07-25T19:34:28Z</when>
+				<when>2013-07-25T19:34:29Z</when>
+				<when>2013-07-25T19:34:30Z</when>
+				<when>2013-07-25T19:34:31Z</when>
+				<when>2013-07-25T19:34:32Z</when>
+				<when>2013-07-25T19:34:33Z</when>
+				<when>2013-07-25T19:34:34Z</when>
+				<when>2013-07-25T19:34:35Z</when>
+				<when>2013-07-25T19:34:36Z</when>
+				<when>2013-07-25T19:34:37Z</when>
+				<when>2013-07-25T19:34:38Z</when>
+				<when>2013-07-25T19:34:39Z</when>
+				<when>2013-07-25T19:34:40Z</when>
+				<when>2013-07-25T19:34:41Z</when>
+				<when>2013-07-25T19:34:42Z</when>
+				<when>2013-07-25T19:34:43Z</when>
+				<when>2013-07-25T19:34:44Z</when>
+				<when>2013-07-25T19:34:45Z</when>
+				<when>2013-07-25T19:34:46Z</when>
+				<when>2013-07-25T19:34:47Z</when>
+				<when>2013-07-25T19:34:48Z</when>
+				<when>2013-07-25T19:34:49Z</when>
+				<when>2013-07-25T19:34:50Z</when>
+				<when>2013-07-25T19:34:51Z</when>
+				<when>2013-07-25T19:34:52Z</when>
+				<when>2013-07-25T19:34:53Z</when>
+				<when>2013-07-25T19:34:54Z</when>
+				<when>2013-07-25T19:34:55Z</when>
+				<when>2013-07-25T19:34:56Z</when>
+				<when>2013-07-25T19:34:57Z</when>
+				<when>2013-07-25T19:34:58Z</when>
+				<when>2013-07-25T19:34:59Z</when>
+				<when>2013-07-25T19:35:00Z</when>
+				<when>2013-07-25T19:35:01Z</when>
+                
+				<gx:coord>125.2981457872732 43.58665868173468 0</gx:coord>
+				<gx:coord>126.5057159581992 43.60148132332506 0</gx:coord>
+				<gx:coord>126.5057159581992 43.60148132332506 0</gx:coord>
+				<gx:coord>129.5105159882331 42.8477911538392 0</gx:coord>
+				<gx:coord>129.5105159882331 42.8477911538392 0</gx:coord>
+				<gx:coord>130.3828899766131 42.90606761048583 0</gx:coord>
+				<gx:coord>131.8981128080533 43.11081082562218 0</gx:coord>
+				<gx:coord>131.8981128080533 43.11081082562218 0</gx:coord>
+				<gx:coord>132.289658829895 42.0538794967024 0</gx:coord>
+				<gx:coord>132.1975438665959 41.56245515903492 0</gx:coord>
+				<gx:coord>132.2124211963447 41.50498310581082 0</gx:coord>
+				<gx:coord>131.7170467463098 40.83585661690038 0</gx:coord>
+				<gx:coord>131.153187203747 40.16848996014896 0</gx:coord>
+				<gx:coord>130.6845560476397 39.54210971101669 0</gx:coord>
+				<gx:coord>130.0261153832082 38.92347306831147 0</gx:coord>
+				<gx:coord>129.1747078720829 38.3972241446462 0</gx:coord>
+				<gx:coord>128.3245823016111 37.87488088167817 0</gx:coord>
+				<gx:coord>127.6258864338583 37.41558234039439 0</gx:coord>
+				<gx:coord>126.8809332325116 37.04544888788072 0</gx:coord>
+				<gx:coord>126.8809332325116 37.04544888788072 0</gx:coord>
+				<gx:coord>128.7440332804423 37.26668928505086 0</gx:coord>
+				<gx:coord>129.8765698535619 37.1811487020801 0</gx:coord>
+				<gx:coord>130.077986889108 37.13782531078047 0</gx:coord>
+				<gx:coord>132.0873941210558 36.77874111862924 0</gx:coord>
+				<gx:coord>134.5412051262504 36.89969208289283 0</gx:coord>
+				<gx:coord>136.336746562862 36.72770949232712 0</gx:coord>
+				<gx:coord>138.8770327061953 36.44855534413993 0</gx:coord>
+				<gx:coord>139.6528972886546 36.27743546353787 0</gx:coord>
+				<gx:coord>139.6528972886546 36.27743546353787 0</gx:coord>
+				<gx:coord>144.5048795681406 37.46069077625831 0</gx:coord>
+				<gx:coord>148.4407540021846 39.04865982961124 0</gx:coord>
+				<gx:coord>151.1736705203654 40.01587992732181 0</gx:coord>
+				<gx:coord>153.7633143257228 42.05569342284578 0</gx:coord>
+				<gx:coord>161.1832037185345 42.7077927797862 0</gx:coord>
+				<gx:coord>165.7460238463635 42.88711658306455 0</gx:coord>
+				<gx:coord>168.5940233561279 43.1328368674499 0</gx:coord>
+				<gx:coord>168.5940233561279 43.1328368674499 0</gx:coord>
+				<gx:coord>178.6275908748993 45.53659391628025 0</gx:coord>
+				<gx:coord>184.2432624795243 47.32327562811204 0</gx:coord>
+				<gx:coord>190.2313066584618 48.73949277268179 0</gx:coord>
+				<gx:coord>190.8717627810691 48.86113427022071 0</gx:coord>
+				<gx:coord>192.3174952566238 49.04473829182153 0</gx:coord>
+				<gx:coord>196.431103856399 49.46518744076944 0</gx:coord>
+				<gx:coord>197.1462431447549 49.38746645924132 0</gx:coord>
+				<gx:coord>198.2477230917672 49.37417451575775 0</gx:coord>
+				<gx:coord>205.2515992767912 49.90229686337632 0</gx:coord>
+				<gx:coord>209.9654181347094 50.14941987711752 0</gx:coord>
+				<gx:coord>-150.0341400158565 50.22104380568693 0</gx:coord>
+				<gx:coord>-146.7006341893082 50.20331782677089 0</gx:coord>
+				<gx:coord>-142.3028058072225 50.16689760259837 0</gx:coord>
+				<gx:coord>-137.5995718148227 50.24194738866642 0</gx:coord>
+				<gx:coord>-137.0669674232381 50.21154622174978 0</gx:coord>
+				<gx:coord>-132.7714614389911 49.80424329155868 0</gx:coord>
+				<gx:coord>-132.5951318973176 49.70293058739969 0</gx:coord>
+				<gx:coord>-132.1731203688508 49.53537894188541 0</gx:coord>
+				<gx:coord>-128.8885053683362 49.2250223467078 0</gx:coord>
+				<gx:coord>-127.8832784118239 49.3668214181776 0</gx:coord>
+				<gx:coord>-126.2386125816758 49.48734705151925 0</gx:coord>
+				<gx:coord>-126.1145821263 49.50797736851111 0</gx:coord>
+				<gx:coord>-125.5501124715719 49.86793027751475 0</gx:coord>
+				<gx:coord>-125.7432491529907 50.33911166759473 0</gx:coord>
+				<gx:coord>-125.2552472319869 50.61399570219333 0</gx:coord>
+				<gx:coord>-125.147506215275 50.57869728353074 0</gx:coord>
+				<gx:coord>-124.4040521311925 50.23476710359759 0</gx:coord>
+				<gx:coord>-122.9760226320841 49.25071112213806 0</gx:coord>
+				 
+				<gx:coord>-122.1248474913138 48.54006066203537 0</gx:coord>
+				<gx:coord>-122.0467527102751 47.6159875570098 0</gx:coord>
+				<gx:coord>-122.5631050788986 45.68707842237885 0</gx:coord>
+				<gx:coord>-122.9493239256292 43.99527532984495 0</gx:coord>
+				<gx:coord>-123.1638213372199 42.4307574910719 0</gx:coord>
+				<gx:coord>-122.1692468378969 40.31001574246015 0</gx:coord>
+				<gx:coord>-122.2772957182249 37.42499960291578 0</gx:coord>
+				<ExtendedData>
+					<SchemaData schemaUrl="#schema">
+					</SchemaData>
+				</ExtendedData>
+			</gx:Track>
+		</gx:MultiTrack>
+	</Placemark>
+</Document>
+</kml>

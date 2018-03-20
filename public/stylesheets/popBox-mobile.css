@@ -1,0 +1,491 @@
+/*popDialogBox*/
+.popDialogBox{
+	position: absolute;
+	z-index:2;
+	right: -75%;
+	top: 75px;
+	opacity: 0;
+	width: 80%;
+	max-width: 350px; /*控制横屏时避免太宽*/
+	max-height: 85%;
+	margin: 2px 0px;
+	overflow-x: hidden;
+	overflow-y: auto;
+
+	border-style: ridge;
+	border-width: 2px;
+	border-color: gray;
+	border-radius: 15px;
+	background: rgba(40, 40, 40, 0.6);
+}
+
+.popDialogBox_head{
+	overflow:hidden;
+	height: 30px;
+	padding: 2px 2px 2px 2px;
+/*	border-style: solid;
+	border-color: red;*/
+}
+
+.popDialogBox_head_title{
+	line-height: 0px;
+	text-align: center;
+	font-size: 16px;
+	font-weight: bold;
+	color: rgba(250, 250, 250, 0.8);
+
+}
+
+.popDialogBox_gov{
+	overflow:hidden;
+	height: 60px; /*js动态控制确保图片比例不变*/
+	padding: 1px 0px 1px 0px;
+}
+
+.popDialogBox_govImage{
+	width: 100%;
+	height: 100%;
+}
+
+.popDialogBox_descrip{
+	position: relative; /*将其设置为relative,子元素才可相对其absolute*/
+	overflow:hidden;
+	height: 200px; /*js动态控制确保图片比例不变*/
+	padding: 1px 0px 1px 0px;
+	background-image: url('/public/img/img_default.jpeg'); /*js订制,需要保持默认值存在*/
+
+	/*背景图片自适应*/
+	filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+  -moz-background-size:100% 100%;  
+  background-size:100% 100%;
+
+  text-align:center;
+}
+
+.popDialogBox_descripUrl{
+	text-decoration: none;
+}
+
+.popDialogBox_descText1{
+	position: absolute;
+	top: 20px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	color: rgb(250, 250, 250);
+	font-size: 27px;
+	font-weight: bold;
+	text-align: center;
+
+	font-family:"黑体";
+
+	letter-spacing:1px;
+}
+
+.popDialogBox_descIconText2{
+	position: absolute;
+	top: 70px;
+	height: 50px;
+}
+
+.popDialogBox_descIcon{
+	float: left;	
+	height: 50px;
+	width: 50px;
+	margin: 0px auto;
+	white-space: nowrap;
+}
+
+
+.popDialogBox_descText2{
+	float: left;
+	color: rgb(250, 250, 250);
+	font-size: 23px;
+	font-weight: bold;
+	font-family:"黑体";
+	text-align: center;
+	margin: 15px 15px 15px 2px;
+
+}
+
+.popDialogBox_2dBarcode{
+	position: absolute;
+	left: 1px;
+	bottom: 0px;
+	width: 50px;
+	height: 50px;
+}
+
+.popDialogBox_barcode{
+	position: absolute;
+	bottom: 1px;
+	left: 50%;
+	margin-left: -41px;
+
+	width: 92px;
+	height: 38px;
+}
+
+.popDialogBox_logo{
+	position: absolute;
+	right: 1px;
+	bottom: 0px;
+	width: 50px;
+	height: 50px;
+}
+
+.popDialogBox_tools{
+	overflow:hidden;
+	padding: 5px 0px; /*上下左右*/
+
+	/*背景图片自适应，背景图片在结束中添加*/
+  filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+  -moz-background-size:100% 100%;  
+  background-size:100% 100%;
+}
+
+.popDialogBox_tool{
+	float: left;
+	overflow: hidden;
+	/*width: 22%;*/ /*使用JS控制*/
+	margin: 5px 0px;
+	padding-left: 2px;
+	padding-right: 2px;
+	padding-top: 2px;
+	padding-bottom: 4px; /*覆盖下边距值，但不改变js需要获取的padding值*/
+	border-style: dashed;
+	border-radius: 4px;
+	border-width: 2px;
+	border-color: rgba(196, 133, 12, 0.8);
+	background: rgba(190, 250, 250, 0.5);
+	text-align: center; /*内部文字据中*/
+	box-sizing: content-box;
+}
+
+.popDialogBox_toolImage{
+	text-align: center;
+	width: 100%;
+	height: 70%;
+}
+
+.popDialogBox_toolUrl{
+	text-decoration: none;
+}
+
+.popDialogBox_toolText{
+	cursor: pointer;
+	font-weight:bold;
+	font-size: 12px;
+	color: black;
+	margin: 1px;
+}
+
+.popDialogBox_toolGap{
+	float: left;
+	width: 7px;
+	height: 5px;
+}
+
+.popDialogBox_close {
+	position: absolute;
+	width: 20px;
+	right: 0px;
+	top: 0px;
+	filter: invert(100%); /*颜色翻转*/
+	opacity: 0.7;
+	
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	-moz-box-shadow: 1px 1px 3px #000;
+	-webkit-box-shadow: 1px 1px 3px #000;
+	box-shadow: 1px 1px 3px #000;
+}
+
+.popDialogBox_close:hover { opacity: 1; }
+
+
+
+
+/*layerSelectBox*/
+.layerSelectBox{
+	display: none;
+	position: absolute;
+	z-index:2;
+	top: 80px;
+	right: 4px;
+	width: 135px;
+	max-height: 70%;
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding: 2px;
+	border-style: ridge;
+	border-width: 1px;
+	border-color: rgba(150,150,150,0.6);
+	border-radius: 10px;
+	background: rgba(40, 40, 40, 0.6);
+}
+
+.layerSelectBox > hr{
+	height:1px;
+	border:none;
+	border-top:1px solid rgba(150, 150, 150, 0.6);
+	margin: 2px 6px;
+}
+
+.layerSelectBox_list{
+	height: 20px;
+	padding: 3px;
+	margin: 2px 0px;
+	overflow: hidden;
+	box-sizing: content-box;
+
+	cursor: pointer; /*since the links are dummy without href values*/
+	user-select: none;/*prevent text selection*/
+	position: relative;/*static positioned elements appear behind absolutely positioned siblings(.ink in this case) hence we will make the links relatively positioned to bring them above .ink*/
+}
+
+.layerSelectBox_list > label{
+	margin: 0px;
+	opacity: 0.8;
+	text-align: left;
+	font-size: 15px;
+	color: white;
+}
+
+.ink {
+	display: block; 
+	position: absolute;
+	background: hsl(180, 40%, 80%);
+	border-radius: 100%;
+	transform: scale(0);
+	z-index: 10;
+		}
+
+/*点击动画*/
+.ink.animate {animation: ripple 0.65s linear;}
+@keyframes ripple {
+	/*scale the element to 250% to safely cover the entire link and fade it out*/
+	100% {opacity: 0; transform: scale(2.5);}
+}
+
+
+/*searchBox*/
+#searchBoxContainer{
+	display: none;
+	position: absolute;
+	z-index: 1;
+	right: 5px;
+	top: 80px;
+	max-height: 75%;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+#searchBox{
+	display: none;
+	width: 246px; /*控制横屏时避免太宽*/
+	margin: 2px 0px 2px 4px;
+
+	border-style: ridge;
+	border-width: 2px;
+	border-color: gray;
+	border-radius: 5px;
+	background: rgba(40, 40, 40, 0.6);
+
+	color: white;
+}
+
+.searchBox_typeButtonsContianer{
+	margin: 0px 5px;
+}
+
+.searchBox_typeButtonContainer{
+	display: inline-block;
+	width: 52px;
+	height: 70px;
+	margin: 2px 0px;
+	overflow: hidden;
+}
+
+.searchBox_typeButtonContainer >p{
+	margin: 1px 1px 1px 0px;
+	text-align: center;
+	font-size: 12px;
+}
+
+.searchBox_typeButton{
+	width: 52px;
+	height: 52px;
+
+  	opacity: 0.6;
+
+	background-color: rgba(120,184,183,0);
+	background-size:100% 100%;
+	vertical-align: middle;
+	cursor: pointer;
+	text-align: center;
+
+	border-radius: 4px;
+	border-top-width: 1px;
+	border-color: #d4b466;
+}
+
+.searchBox_resultList{
+	margin: 5px;
+	display: none;
+}
+
+.searchBox_resultList >h5{
+	display: inline-block;
+	margin: 3px auto;
+}
+
+.searchBox_resultListOL{
+	max-height: 150px;
+	overflow-y: auto;
+	margin: 8px auto;
+	padding-left: 28px;
+}
+
+.searchBox_resultListOL> li{
+	margin-bottom: 8px;
+	cursor: pointer;
+}
+
+.searchBox_resultListOL >li >img{
+	width: 25px;
+	height: 25px;
+	margin-bottom: -5px;
+	margin-right: 5px;
+}
+
+.searchBox_resultListLI{
+	margin-bottom: 3px;
+}
+
+.searchBox_resultListLI:hover{
+	background: rgba(140, 140, 140, 0.4);
+}
+
+
+/*specialitySelectBox*/
+.specialitySelectBox{
+  /*display: none;*/
+  position: absolute;
+  top: 80px;
+  z-index: 2;
+  width: 32px;
+}
+.specialitySelectBox >button {
+  margin: 2px 0px;
+}
+
+/*stationSelectBox*/
+.stationSelectBox{
+  /*display: none;*/
+  position: absolute;
+  top: 80px;
+  z-index: 2;
+  width: 32px;
+}
+.stationSelectBox >button {
+  margin: 2px 0px;
+}
+
+/*satelliteSelectBox*/
+.satelliteSelectBox{
+  /*display: none;*/
+  position: absolute;
+  top: 80px;
+  z-index: 2;
+  width: 32px;
+}
+.satelliteSelectBox >button {
+  margin: 2px 0px;
+}
+
+
+/*navigationBox*/
+.navigationBox{
+  position: absolute;
+  top: 90px;
+  right: 5px;
+  z-index: 2;
+
+  width: 200px;
+  height: auto;
+
+  background-color: white;
+
+  border-style: ridge;
+  border-width: 1px;
+  border-color: rgba(150,150,150,0.6);
+  border-radius: 10px;
+  background: rgba(40, 40, 40, 0.6);
+}
+
+.navigationBox_close {
+  position: absolute;
+  width: 20px;
+  right: 3px;
+  top: 3px;
+  filter: invert(100%); /*颜色翻转*/
+  opacity: 0.7;
+  
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+  -moz-box-shadow: 1px 1px 3px #000;
+  -webkit-box-shadow: 1px 1px 3px #000;
+  box-shadow: 1px 1px 3px #000;
+}
+
+.navigationBox_close:hover { opacity: 1; }
+
+.navigationBox > h3{
+  color: white;
+  margin: 4px;
+}
+
+.navigationBox_form > label{
+  color: white;
+  margin: 2px;
+}
+
+.navigationBox_form > input{
+  display: block;
+  margin: 4px 2px;
+}
+
+.navigationBox_form > p{
+  color: white;
+}
+
+.navigationBox_form > button{
+  margin: 4px;
+}
+
+.navigationBox_suggests{
+  display: none;
+  list-style-type:none;
+  margin-top: 2px;
+  margin-bottom: 10px; 
+  padding-left: 4px;
+  white-space : nowrap;
+
+}
+
+.navigationBox_suggests > li{
+  width: 190px;
+  margin-bottom: 2px;
+  overflow: hidden;
+  color: white;
+}
+
+.navigationBox_suggestsLi:hover{
+  cursor:pointer;
+}
+
+.navigationBox_suggests > li > small{
+  color: gray;
+}

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Schuylkill River Trail Bike Ride</name>
+	<open>1</open>
+	<Schema name="D:/Cesium1.12/Apps/br/kml/south_line.kml" id="schema">
+		<gx:SimpleArrayField kml:type="int" kml:name="power"><displayName>Power (W)</displayName>
+</gx:SimpleArrayField>
+		<gx:SimpleArrayField kml:type="int" kml:name="cadence"><displayName>Cadence (rpm)</displayName>
+</gx:SimpleArrayField>
+		<gx:SimpleArrayField kml:type="int" kml:name="heart_rate"><displayName>Heart rate (bpm)</displayName>
+</gx:SimpleArrayField>
+	</Schema>
+	<Style id="track">
+		<IconStyle>
+			<scale>3.5</scale>
+			<Icon>
+				<href>../img/trackflag.png</href>
+			</Icon>
+		</IconStyle>
+		<LineStyle>
+			<color>ff7faaff</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="track0">
+		<IconStyle>
+			<scale>3.5</scale>
+			<Icon>
+				<href>../img/trackflag.png</href>
+			</Icon>
+		</IconStyle>
+		<LineStyle>
+			<color>ff7faaff</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<StyleMap id="track1">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#track0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#track</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Placemark id="south_line">
+		<name>South_Line</name>
+		 
+		<styleUrl>#track1</styleUrl>
+		 
+		<gx:MultiTrack>
+			<altitudeMode>absolute</altitudeMode>
+			<gx:Track>
+				<when>2013-07-25T19:34:05Z</when>
+				<when>2013-07-25T19:34:06Z</when>
+				<when>2013-07-25T19:34:07Z</when>
+				<when>2013-07-25T19:34:08Z</when>
+				<when>2013-07-25T19:34:09Z</when>
+				<when>2013-07-25T19:34:10Z</when>
+				<when>2013-07-25T19:34:11Z</when>
+				<when>2013-07-25T19:34:12Z</when>
+				<when>2013-07-25T19:34:13Z</when>
+				<when>2013-07-25T19:34:14Z</when>
+				<when>2013-07-25T19:34:16Z</when>
+				<when>2013-07-25T19:34:17Z</when>
+				<when>2013-07-25T19:34:19Z</when>
+				<when>2013-07-25T19:34:21Z</when>
+				<when>2013-07-25T19:34:23Z</when>
+				<when>2013-07-25T19:34:25Z</when>
+				<when>2013-07-25T19:34:27Z</when>
+				<when>2013-07-25T19:34:29Z</when>
+				<when>2013-07-25T19:34:31Z</when>
+				<when>2013-07-25T19:34:33Z</when>
+				<gx:coord>118.6671220029769 24.87029658606663 0</gx:coord>
+				<gx:coord>116.974534234922 23.12187640749763 0</gx:coord>
+				<gx:coord>113.2641672031351 23.12902799745643 0</gx:coord>
+				<gx:coord>114.4963326102408 20.5923405076191 0</gx:coord>
+				<gx:coord>115.3174444468661 18.49392449011144 0</gx:coord>
+				<gx:coord>116.822867945812 16.68209526045941 0</gx:coord>
+				<gx:coord>118.5717644883998 15.01634945543071 0</gx:coord>
+				<gx:coord>120.9246783474941 13.64750472105117 0</gx:coord>
+				<gx:coord>122.3975216415763 5.722136117489955 0</gx:coord>
+				<gx:coord>127.7776087660084 1.093624287988869 0</gx:coord>
+				<gx:coord>131.1622959404421 -1.228777174465159 0</gx:coord>
+				<gx:coord>132.1437013438244 -4.420032455076308 0</gx:coord>
+				<gx:coord>136.9411630151606 -8.299237688815714 0</gx:coord>
+				<gx:coord>141.8192190162865 -10.60786777254626 0</gx:coord>
+				<gx:coord>148.5466750014404 -14.7711717266071 0</gx:coord>
+				<gx:coord>153.1431380092086 -21.15785861241749 0</gx:coord>
+				<gx:coord>156.5531552901343 -27.35614901953985 0</gx:coord>
+				<gx:coord>155.9360486384411 -32.67459896252554 0</gx:coord>
+				<gx:coord>155.9360486384411 -32.67459896252554 0</gx:coord>
+				<gx:coord>151.1992612358752 -33.97007830734741 0</gx:coord>
+				<ExtendedData>
+					<SchemaData schemaUrl="#schema">
+					</SchemaData>
+				</ExtendedData>
+			</gx:Track>
+		</gx:MultiTrack>
+	</Placemark>
+</Document>
+</kml>

@@ -1,0 +1,147 @@
+<?php 
+  include 'header.lzW';
+  include 'sidebar.lzW';
+?>
+
+
+<!-- **********************************************************************************************************************************************************
+MAIN CONTENT
+*********************************************************************************************************************************************************** -->
+<!--main content start-->
+<section id="main-content">
+  <section class="wrapper site-min-height" style="min-height: 750px;">
+  <h3><i class="fa fa-angle-right"></i> 新增数据项</h3>
+
+
+    <div class="row mt">
+      <div class="col-lg-9" style="width: 60%;">
+        <div class="form-panel">
+          <h4 class="mb"><i class="fa fa-angle-right"></i> 1. 设置数据项的空间位置和基本信息</h4>
+          <p style="color: blue;">提示：录入数据后，请回车并预览效果</p>
+          <div class="form-group" style="border-bottom-style: solid;border-bottom-color: #f1b828;border-bottom-width: 2px;">
+          </div>
+          <form class="form-horizontal style-form" id="addEntityStep1" onsubmit="return sendPostForm(this.id, '/controll/ControllTest.php', addEntityStep1FormRespond);">
+            <?php if(array_key_exists('entity_id', $_GET)){ ?>
+            <input type="hidden" name="requestOpt" value="_update">
+            <input type="hidden" name="entity_id" value="<?php echo $D['entity_id'];?>">
+            <?php }else{ ?>
+            <input type="hidden" name="requestOpt" value="_insert">
+            <?php } ?>
+            <input type="hidden" name="status" value="5">
+            
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">类型</label>
+              <div class="col-sm-10">
+                <select class="form-control" name="type_id" id="type_id" onchange="startEntityPreview();">
+                  <?php if($_GET['tableName'] == 'speciality'){?>
+                    <option value="1" <?php if(isset($D) && $D['type_id'] == 1){echo 'selected="selected"';} ?>>宇宝</option>
+                    <option value="2" <?php if(isset($D) && $D['type_id'] == 2){echo 'selected="selected"';} ?>>庄园</option>
+                    <option value="3" <?php if(isset($D) && $D['type_id'] == 3){echo 'selected="selected"';} ?>>农场</option>
+                    <option value="4" <?php if(isset($D) && $D['type_id'] == 4){echo 'selected="selected"';} ?>>基地</option>
+                  <?php }elseif ($_GET['tableName'] == 'station') { ?>
+                    <option value="11"<?php if(isset($D) && $D['type_id'] == 11){echo 'selected="selected"';} ?>>网点</option>
+                    <option value="12"<?php if(isset($D) && $D['type_id'] == 12){echo 'selected="selected"';} ?>>爱心</option>
+                    <option value="13"<?php if(isset($D) && $D['type_id'] == 13){echo 'selected="selected"';} ?>>单位</option>
+                    <option value="14"<?php if(isset($D) && $D['type_id'] == 14){echo 'selected="selected"';} ?>>个人</option>
+                  <?php }elseif ($_GET['tableName'] == 'satellite') { ?>
+                    <option value="21"<?php if(isset($D) && $D['type_id'] == 21){echo 'selected="selected"';} ?>>VSAT</option>
+                  <?php } ?>
+                </select>
+                <span class="help-block" id="type_id_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">级别</label>
+              <div class="col-sm-10">
+                <select class="form-control" name="level">
+                  <option value="30" <?php if(isset($D) && $D['level'] == 30){echo 'selected="selected"';} ?>>县/区</option>
+                  <option value="20" <?php if(isset($D) && $D['level'] == 20){echo 'selected="selected"';} ?>>市</option>
+                  <option value="10" <?php if(isset($D) && $D['level'] == 10){echo 'selected="selected"';} ?>>省/自治区/直辖市</option>
+                  <option value="0" <?php if(isset($D) && $D['level'] == 0){echo 'selected="selected"';} ?>>国家</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">显示名称</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="显示名称" name="name" onchange="startEntityPreview();" value="<?php if(isset($D)){echo $D['name'];}?>">
+                <span class="help-block" id="name_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">纬度</label>
+              <div class="col-sm-10">
+                <input type="number" class="form-control" placeholder="可直接在此输入坐标，也可在右侧预览窗口内双击定位" name="lat" min="-90" max="90" step="0.000001" onchange="startEntityPreview();" value="<?php if(isset($D)){echo $D['lat'];}?>">
+                <span class="help-block" id="lat_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">经度</label>
+              <div class="col-sm-10">
+                <input type="number" class="form-control" placeholder="可直接在此输入坐标，也可在右侧预览窗口内双击定位" name="lng" min="-180" max="180" step="0.000001" onchange="startEntityPreview();" value="<?php if(isset($D)){echo $D['lng'];}?>">
+                <span class="help-block" id="lng_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">行政区域</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="请输入完整行政区域名称，如“大理白族自治州”" name="district" onchange="AdminBoundary.drawBoundary(this.value);" value="<?php if(isset($D)){echo $D['district'];}?>">
+                <span class="help-block" id="district_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">搜索关键词</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="多个关键词之间，请使用分号（;）分隔" name="key_words" onchange="startEntityPreview();" value="<?php if(isset($D)){echo $D['key_words'];}?>">
+                <span class="help-block" id="key_words_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group" style="border-bottom-style: solid;border-bottom-color: #f1b828;border-bottom-width: 2px;">
+              <label class="col-sm-2 col-sm-2 control-label">更换当前图标 <i class="fa fa-question-circle" title="建议尺寸为40*40像素; 若未选择将使用默认或已有图标"></i></label>
+                
+              <div class="col-sm-10">
+                <p id="original_icon" <?php if(!isset($D) || FP::keyNotExitOrNoContent('icon', $D)){echo 'style="display:none;"';} ?>><?php if(isset($D)){echo $D['icon'];} ?></p>
+                <span class="" id="tips">建议尺寸为40*40像素,格式为png或jpg,大小不超过2MB; 若未选择将使用默认或已有图标</span>
+                <input type="file" class="form-control" accept="image/jpg,image/jpeg,image/png" name="icon" onchange="fileInputChk(this); startEntityPreview();">
+                <span class="help-block" id="icon_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <button type="button" class="btn btn-theme pull-right" onclick="return sendPostForm(this.parentNode.parentNode.id, '/controll/ControllTest.php', addEntityStep1FormRespond);">下一步</button>
+              <button type="button" class="btn btn-theme01 pull-right" onclick="if(confirm('确认放弃？')){window.location.href='/view/engine/';}">放弃</button>
+            </div>
+
+          </form>
+
+        </div>
+      </div><!-- col-lg-12-->
+
+      <div class="col-lg-3 ds" style="width: 38%; height: 600px; margin-top: 10px;">
+        <h3  onclick="startEntityPreview();" style="cursor:pointer;"><strong>预 览</strong></h3>
+        <div class="desc" style="height: 600px;">
+          <?php include 'cesiumPreview.lzW'; ?>
+        </div>
+      </div><!-- /col-lg-3 -->
+
+
+    </div>
+
+  </section>
+</section>
+<!--main content end-->
+
+<!-- 引入天地图JS, 用于查询边界线 -->
+<script type="text/javascript" src="http://api.tianditu.com/api?v=4.0"></script>
+<div id="mapDiv"></div>
+
+<?php
+  include 'footer.lzW';
+?>

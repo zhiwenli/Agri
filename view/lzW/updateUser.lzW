@@ -1,0 +1,95 @@
+<?php 
+  include 'header.lzW';
+  include 'sidebar.lzW';
+?>
+
+
+
+<!-- **********************************************************************************************************************************************************
+MAIN CONTENT
+*********************************************************************************************************************************************************** -->
+<!--main content start-->
+<section id="main-content">
+  <section class="wrapper site-min-height" style="min-height: 750px;">
+   <h3><i class="fa fa-angle-right"></i> 用户信息</h3>
+
+
+    <div class="row mt">
+      <div class="col-lg-9">
+        <div class="form-panel">
+          <h4 class="mb"><i class="fa fa-angle-right"></i> 基本信息</h4>
+          <p></p>
+
+          <form class="form-horizontal style-form" id="addEntityStep1" onsubmit="return sendPostForm(this.id, '/controll/ControllTest.php', updateUserRespond);">
+            <input type="hidden" name="requestOpt" value="_updateUser">
+            <input type="hidden" name="user_id" value="<?php echo $D['user_id'];?>">
+
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">邮箱</label>
+              <div class="col-sm-10">
+                <input type="Email" class="form-control" placeholder="常用邮箱，用于登录" name="email" id="email" value="<?php if(isset($D)){echo $D['email'];}?>">
+                <span class="error-tips" id="email_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">密码</label>
+              <div class="col-sm-10">
+                <input type="password" class="form-control" placeholder="密码" id='pwd' name="pwd">
+                <span class="error-tips" id="pwd_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">确认密码</label>
+              <div class="col-sm-10">
+                <input type="password" class="form-control" placeholder="请再次输入密码" id='pwd_conform' name="pwd_conform">
+                <span class="error-tips" id="pwd_conform_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">姓名</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="真实姓名" name="name" value="<?php if(isset($D)){echo $D['name'];}?>">
+                <span class="error-tips" id="name_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">电话</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="11位手机号" name="tel" value="<?php if(isset($D)){echo $D['tel'];}?>">
+                <span class="error-tips" id="tel_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">所属单位</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="总公司、子公司、分公司等单位全称" name="dept" value="<?php if(isset($D)){echo $D['dept'];}?>">
+                <span class="error-tips" id="dept_tips"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <button type="submit" class="btn btn-theme pull-right" onclick="if($('input[name=pwd]').val() != ''){if (!pwdLen('pwd') || !pwdconfirm('pwd', 'pwd_conform')) {return false;}else{encryptionEle('pwd');}}">保存</button>
+              <button type="button" class="btn btn-theme01 pull-right" onclick="if(confirm('确认取消？')){window.history.go(-1);}">取消</button>
+            </div>
+
+          </form>
+
+        </div>
+      </div><!-- col-lg-12-->             
+
+    </div>
+
+  </section>
+</section>
+<!--main content end-->
+
+
+
+<?php
+  include 'footer.lzW';
+?>

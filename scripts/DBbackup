@@ -1,0 +1,2 @@
+echo starMYSQLdump
+mysqldump -uecnu -pecnu2016 Agri > /data/wwwroot/default/backup/DB/db.sql

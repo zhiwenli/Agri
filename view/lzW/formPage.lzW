@@ -1,0 +1,32 @@
+<html>
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/public/javascripts/ms/ajaxHTTP.js" type="text/javascript"></script>
+  </head>
+
+
+  <body>
+
+    <form id="addDataForm" onsubmit="return sendPostForm(this.id, '/controll/ControllTest.php', loginFormRespond);">
+      <input type="hidden" name="requestOpt" value="_insert">
+      <!-- <input type="hidden" name="requestOpt" value="_update" /> -->
+      <!-- <input type="hidden" name="requestOpt" value="_delete" /> -->
+      <input type="hidden" name="entity_id" <?php if(!FP::keyNotExitOrNoContent('entity_id', $data)){echo "value=".$data['entity_id'];}?> />
+      <p>类型: <input type="number" name="type_id" <?php if(!FP::keyNotExitOrNoContent('type_id', $data)){echo "value=".$data['type_id'];}?> /></p>
+      <p>名字: <input type="text" name="name" <?php if(!FP::keyNotExitOrNoContent('name', $data)){echo "value=".$data['name'];}?> /></p>
+      <p>级别: <input type="text" name="level" <?php if(!FP::keyNotExitOrNoContent('level', $data)){echo "value=".$data['level'];}?> /></p>
+      <p>维度: <input type="text" name="lat" <?php if(!FP::keyNotExitOrNoContent('lat', $data)){echo "value=".$data['lat'];}?> /></p>
+      <p>经度: <input type="text" name="lng" <?php if(!FP::keyNotExitOrNoContent('lng', $data)){echo "value=".$data['lng'];}?> /></p>
+      <p>关键词: <input type="text" name="key_words" <?php if(!FP::keyNotExitOrNoContent('key_words', $data)){echo "value=".$data['key_words'];}?> /></p>
+
+      <button type="button">提交</button>
+    </form>
+
+
+  </body>
+  <script type="text/javascript">
+  </script>
+</html>
